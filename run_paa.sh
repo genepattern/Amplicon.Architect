@@ -58,6 +58,8 @@ echo -e "\n"
 echo $RUN_COMMAND
 echo -e "\n"
 
+RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
+
 
 # run the actual items
 wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
