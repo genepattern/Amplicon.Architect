@@ -54,14 +54,14 @@ then
 	RUN_COMMAND+=" --cnv_bed $BEDFILE"
 fi
 
-
 echo -e "\n"
-#wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${11}.tar.gz
-#tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
 echo $RUN_COMMAND
-
 echo -e "\n"
 
+
+# run the actual items
+wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
+tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
 eval $RUN_COMMAND
 
 # echo $SAMPLE_NAME
