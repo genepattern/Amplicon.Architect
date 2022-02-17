@@ -4,9 +4,25 @@ SAMPLE_NAME=$1
 N_THREADS=$2
 REFERENCE=$3
 BAM_PROVIDED=$4
+
+# From jluebeck/PrepareAA repo. Setting environmental arguments
 AA_DATA_REPO=/home/data_repo
 export AA_DATA_REPO
+AA_SRC=/home/programs/AmpliconArchitect-master/src
+export AA_SRC
+MOSEKLM_LICENSE_FILE=/home/programs/mosek/8/licenses
+export MOSEKLM_LICENSE_FILE
+NCM_HOME=/home/programs/NGSCheckMate-master/
+export NCM_HOME
 
+ls /home > /home/output/docker_home_manifest.log
+
+#works for py2 and py3, check if NCM works
+python $NCM_HOME/ncm.py -h >> /home/output/docker_home_manifest.log
+
+
+
+# Building the launch script
 RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE -o /home/output"
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
@@ -62,7 +78,8 @@ echo -e "\n"
 RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
 
 
-# run the actual items
+
+# download the data, and run the command.
 wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
 tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
 
