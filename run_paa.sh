@@ -1,12 +1,13 @@
 #!/bin/bash
 echo This is working
-
 SAMPLE_NAME=$1
 N_THREADS=$2
 REFERENCE=$3
 BAM_PROVIDED=$4
+AA_DATA_REPO=/home/data_repo
+export AA_DATA_REPO
 
-RUN_COMMAND="python2 programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
+RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
