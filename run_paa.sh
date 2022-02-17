@@ -7,7 +7,7 @@ BAM_PROVIDED=$4
 AA_DATA_REPO=/home/data_repo
 export AA_DATA_REPO
 
-RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
+RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE -o /home/output"
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
@@ -65,7 +65,6 @@ RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
 # run the actual items
 wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
 tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
-python2 programs/PrepareAA-master/PrepareAA.py
 
 eval $RUN_COMMAND
 
