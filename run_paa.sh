@@ -64,6 +64,8 @@ RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
 # run the actual items
 wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
 tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
+python2 programs/PrepareAA-master/PrepareAA.py
+
 eval $RUN_COMMAND
 
 # echo $SAMPLE_NAME
