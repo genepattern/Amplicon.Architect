@@ -23,7 +23,7 @@ python $NCM_HOME/ncm.py -h >> /home/output/docker_home_manifest.log
 
 
 # Building the launch script
-RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE -o /home/output"
+RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
