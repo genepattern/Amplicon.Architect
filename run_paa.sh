@@ -80,8 +80,8 @@ RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
 
 
 # download the data, and run the command.
-wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/$REFERENCE.tar.gz
-tar -xf /home/data_repo/$REFERENCE.tar.gz --directory /home/data_repo
+wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
+unzip /home/data_repo/$REFERENCE.zip -d /home/data_repo
 
 eval $RUN_COMMAND
 

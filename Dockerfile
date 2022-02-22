@@ -8,8 +8,9 @@ FROM jluebeck/prepareaa:latest
 RUN apt-get install tar
 COPY run_paa.sh /home/
 COPY mosek.lic /home/programs/mosek/8/licenses
+RUN apt-get install unzip
 
 # testing purposes
 # RUN mkdir -p /home/testdata
-# COPY rawfastq/* /home/testdata/
+# COPY fastq/* /home/testdata/
 # COPY bams/* /home/testdata/
