@@ -6,24 +6,24 @@ REFERENCE=$3
 BAM_PROVIDED=$4
 
 # From jluebeck/PrepareAA repo. Setting environmental arguments
-AA_DATA_REPO=/home/data_repo
+AA_DATA_REPO=/opt/genepatt/data_repo
 export AA_DATA_REPO
-AA_SRC=/home/programs/AmpliconArchitect-master/src
+AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src
 export AA_SRC
-MOSEKLM_LICENSE_FILE=/home/programs/mosek/8/licenses
+MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses
 export MOSEKLM_LICENSE_FILE
-NCM_HOME=/home/programs/NGSCheckMate-master/
+NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/
 export NCM_HOME
 
-ls /home > /home/output/docker_home_manifest.log
+ls /home > /opt/genepatt/output/docker_home_manifest.log
 
 #works for py2 and py3, check if NCM works
-python $NCM_HOME/ncm.py -h >> /home/output/docker_home_manifest.log
+python $NCM_HOME/ncm.py -h >> /opt/genepatt/output/docker_home_manifest.log
 
 
 
 # Building the launch script
-RUN_COMMAND="python2 /home/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
+RUN_COMMAND="python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
@@ -75,13 +75,13 @@ echo -e "\n"
 echo $RUN_COMMAND
 echo -e "\n"
 
-RUN_COMMAND+=" --cnvkit_dir /home/programs/cnvkit.py"
+RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 
 
 
 # download the data, and run the command.
-wget -P /home/data_repo/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
-unzip /home/data_repo/$REFERENCE.zip -d /home/data_repo
+wget -P /opt/genepatt/data_repo/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
+unzip /opt/genepatt/data_repo/$REFERENCE.zip -d /opt/genepatt/data_repo
 
 eval $RUN_COMMAND
 
