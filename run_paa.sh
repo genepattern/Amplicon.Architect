@@ -15,7 +15,7 @@ export MOSEKLM_LICENSE_FILE
 NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/
 export NCM_HOME
 
-ls /home > /opt/genepatt/output/docker_home_manifest.log
+ls /opt/genepatt > /opt/genepatt/output/docker_home_manifest.log
 
 #works for py2 and py3, check if NCM works
 python $NCM_HOME/ncm.py -h >> /opt/genepatt/output/docker_home_manifest.log
@@ -24,6 +24,11 @@ python $NCM_HOME/ncm.py -h >> /opt/genepatt/output/docker_home_manifest.log
 
 # Building the launch script
 RUN_COMMAND="python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
+
+# If the bam file is provided, then the arguments will only have one BAM file, and then the rest of the optional arguments. 
+# This part sets the rest of the optional argument to its correct places. 
+
+
 if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
