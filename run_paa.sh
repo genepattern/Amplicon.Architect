@@ -92,8 +92,9 @@ wget -P $AA_DATA_REPO/ https://datasets.genepattern.org/data/module_support_file
 unzip $AA_DATA_REPO/$REFERENCE.zip -d $AA_DATA_REPO
 
 ls -alrt $AA_DATA_REPO
-
 eval $RUN_COMMAND
+
+rm -rf $PWD/.data_repo
 
 # echo $SAMPLE_NAME
 # echo $N_THREADS
