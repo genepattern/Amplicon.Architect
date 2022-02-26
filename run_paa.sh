@@ -6,8 +6,11 @@ REFERENCE=$3
 BAM_PROVIDED=$4
 
 # From jluebeck/PrepareAA repo. Setting environmental arguments
-AA_DATA_REPO=/opt/genepatt/data_repo
+AA_DATA_REPO=$PWD/.data_repo/
 export AA_DATA_REPO
+mkdir -p $AA_DATA_REPO
+mkdir -p $PWD/output
+
 AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src
 export AA_SRC
 MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses
@@ -15,10 +18,10 @@ export MOSEKLM_LICENSE_FILE
 NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/
 export NCM_HOME
 
-ls /opt/genepatt > /opt/genepatt/output/docker_home_manifest.log
+ls /opt/genepatt > $PWD/output/docker_home_manifest.log
 
 #works for py2 and py3, check if NCM works
-python $NCM_HOME/ncm.py -h >> /opt/genepatt/output/docker_home_manifest.log
+python $NCM_HOME/ncm.py -h >> $PWD/output/docker_home_manifest.log
 
 
 
@@ -85,8 +88,10 @@ RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 
 
 # download the data, and run the command.
-wget -P /opt/genepatt/data_repo/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
-unzip /opt/genepatt/data_repo/$REFERENCE.zip -d /opt/genepatt/data_repo
+wget -P $AA_DATA_REPO/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
+unzip $AA_DATA_REPO/$REFERENCE.zip -d $AA_DATA_REPO
+
+ls -alrt $AA_DATA_REPO
 
 eval $RUN_COMMAND
 
