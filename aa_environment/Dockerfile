@@ -60,7 +60,6 @@ RUN mkdir -p /opt/genepatt/output/
 RUN mkdir -p /opt/genepatt/input/
 RUN mkdir -p /opt/genepatt/programs/mosek/8/licenses/
 RUN mkdir -p /opt/genepatt/data_repo/
-COPY run_paa.sh /opt/genepatt/
 
 #Set environmental variables
 RUN echo export MOSEKPLATFORM=linux64x86 >> ~/.bashrc
@@ -72,14 +71,8 @@ RUN cd /opt/genepatt/programs/mosek/8/tools/platform/linux64x86/python/2/ && pyt
 RUN echo export AA_DATA_REPO=/opt/genepatt/data_repo >> ~/.bashrc
 RUN echo export AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src >> ~/.bashrc
 RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-master/src >> ~/.bashrc
-ADD https://github.com/jluebeck/AmpliconArchitect/archive/master.zip /opt/genepatt/programs
-RUN cd /opt/genepatt/programs && unzip master.zip
-ADD https://github.com/jluebeck/AmpliconClassifier/archive/master.zip /opt/genepatt/programs
-RUN cd /opt/genepatt/programs && unzip master.zip
-ADD https://github.com/jluebeck/PrepareAA/archive/master.zip /opt/genepatt/programs
-RUN cd /opt/genepatt/programs && unzip master.zip
-ADD https://github.com/parklab/NGSCheckMate/archive/master.zip /opt/genepatt/programs
-RUN cd /opt/genepatt/programs && unzip master.zip
+COPY src/* /opt/genepatt/programs
+RUN cd /opt/genepatt/programs && unzip AmpliconArchitect-master.zip && unzip AmpliconClassifier-main.zip && unzip NGSCheckMate-master.zip && unzip PrepareAA-master.zip
 RUN echo export NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/ >> ~/.bashrc
 RUN cp /opt/genepatt/programs/PrepareAA-master/docker/paa_default_ncm.conf /opt/genepatt/programs/NGSCheckMate-master/ncm.conf
 RUN cp `which cnvkit.py` /opt/genepatt/programs/cnvkit.py

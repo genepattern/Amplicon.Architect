@@ -6,7 +6,7 @@ REFERENCE=$3
 BAM_PROVIDED=$4
 
 # From jluebeck/PrepareAA repo. Setting environmental arguments
-AA_DATA_REPO=$PWD/.data_repo/
+AA_DATA_REPO=$PWD/.data_repo
 export AA_DATA_REPO
 mkdir -p $AA_DATA_REPO
 mkdir -p $PWD/output
@@ -28,8 +28,8 @@ python $NCM_HOME/ncm.py -h >> $PWD/output/docker_home_manifest.log
 # Building the launch script
 RUN_COMMAND="python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
 
-# If the bam file is provided, then the arguments will only have one BAM file, and then the rest of the optional arguments. 
-# This part sets the rest of the optional argument to its correct places. 
+# If the bam file is provided, then the arguments will only have one BAM file, and then the rest of the optional arguments.
+# This part sets the rest of the optional argument to its correct places.
 
 
 if [ "$BAM_PROVIDED" = "Yes" ]
@@ -40,8 +40,7 @@ then
 	PURITY=$8
 	CNVKITSEGMENT=$9
 	BEDFILE=${10}
-	OUTPUT_PATH=${11}
-	RUN_COMMAND+=" --sorted_bam $BAM_FILE -o $OUTPUT_PATH"
+	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
 elif [ "$BAM_PROVIDED" = "No" ]
 then
 	FASTQ1=$5
@@ -51,8 +50,7 @@ then
 	PURITY=$9
 	CNVKITSEGMENT=${10}
 	BEDFILE=${11}
-	OUTPUT_PATH=${12}
-	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2 -o $OUTPUT_PATH"
+	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2"
 fi
 
 if [ "$RUN_AA" = "Yes" ]
@@ -90,8 +88,13 @@ RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 
 
 # download the data, and run the command.
-wget -P $AA_DATA_REPO/ https://datasets.genepattern.org/data/module_support_files/PrepareAmpliconArchitect/$REFERENCE.zip
-unzip $AA_DATA_REPO/$REFERENCE.zip -d $AA_DATA_REPO
+wget -q -P $AA_DATA_REPO/ https://aadatarepoindexed.s3.us-west-1.amazonaws.com/${REFERENCE}_indexed.tar.gz
+wget -q -P $AA_DATA_REPO/ https://aadatarepoindexed.s3.us-west-1.amazonaws.com/${REFERENCE}_indexed_md5sum.txt
+unzip $AA_DATA_REPO/${REFERENCE}_indexed.tar.gz -d $AA_DATA_REPO
+
+cd $AA_DATA_REPO && touch coverage.stats && chmod a+r coverage.stats
+source ~/.bashrc
+
 
 ls -alrt $AA_DATA_REPO
 eval $RUN_COMMAND
