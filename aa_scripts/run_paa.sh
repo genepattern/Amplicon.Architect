@@ -40,7 +40,8 @@ then
 	PURITY=$8
 	CNVKITSEGMENT=$9
 	BEDFILE=${10}
-	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
+	OUTPUT_PATH=${11}
+	RUN_COMMAND+=" --sorted_bam $BAM_FILE -o $OUTPUT_PATH"
 elif [ "$BAM_PROVIDED" = "No" ]
 then
 	FASTQ1=$5
@@ -50,7 +51,8 @@ then
 	PURITY=$9
 	CNVKITSEGMENT=${10}
 	BEDFILE=${11}
-	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2"
+	OUTPUT_PATH=${12}
+	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2 -o $OUTPUT_PATH"
 fi
 
 if [ "$RUN_AA" = "Yes" ]
