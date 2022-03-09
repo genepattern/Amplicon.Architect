@@ -90,7 +90,7 @@ RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 # download the data, and run the command.
 wget -q -P $AA_DATA_REPO/ https://aadatarepoindexed.s3.us-west-1.amazonaws.com/${REFERENCE}_indexed.tar.gz
 wget -q -P $AA_DATA_REPO/ https://aadatarepoindexed.s3.us-west-1.amazonaws.com/${REFERENCE}_indexed_md5sum.txt
-unzip $AA_DATA_REPO/${REFERENCE}_indexed.tar.gz -d $AA_DATA_REPO
+tar zxf $AA_DATA_REPO/${REFERENCE}_indexed.tar.gz -d $AA_DATA_REPO
 
 cd $AA_DATA_REPO && touch coverage.stats && chmod a+r coverage.stats
 source ~/.bashrc
