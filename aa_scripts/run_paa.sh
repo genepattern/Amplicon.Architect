@@ -36,26 +36,33 @@ if [ "$BAM_PROVIDED" = "Yes" ]
 then
 	BAM_FILE=$5
 	RUN_AA=$6
-	PLOIDY=$7
-	PURITY=$8
-	CNVKITSEGMENT=$9
-	BEDFILE=${10}
+	RUN_AC=$7
+	PLOIDY=$8
+	PURITY=$9
+	CNVKITSEGMENT=${10}
+	BEDFILE=${11}
 	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
 elif [ "$BAM_PROVIDED" = "No" ]
 then
 	FASTQ1=$5
 	FASTQ2=$6
 	RUN_AA=$7
-	PLOIDY=$8
-	PURITY=$9
-	CNVKITSEGMENT=${10}
-	BEDFILE=${11}
+	RUN_AC=$8
+	PLOIDY=$9
+	PURITY=${10}
+	CNVKITSEGMENT=${11}
+	BEDFILE=${12}
 	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2"
 fi
 
 if [ "$RUN_AA" = "Yes" ]
 then
 	RUN_COMMAND+=" --run_AA"
+fi
+
+if [ "$RUN_AC" = "Yes" ]
+then
+	RUN_COMMAND+=" --run_AC"
 fi
 
 if [ "$PLOIDY" != "-1" ]
