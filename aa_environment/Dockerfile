@@ -37,7 +37,7 @@ unzip \
 wget \
 zlib1g-dev
 RUN apt-get install -y python3-matplotlib python3-numpy python3-scipy
-RUN pip2 install Cython pysam==0.15.2 Flask intervaltree matplotlib numpy scipy
+RUN pip2 install future Cython pysam==0.15.2 Flask intervaltree matplotlib numpy scipy
 RUN pip2 install --upgrade matplotlib
 RUN fc-cache -f
 
@@ -45,7 +45,7 @@ RUN fc-cache -f
 RUN apt-get install -y python3-pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -U Cython
-RUN pip3 install -U future futures biopython reportlab pandas pomegranate pyfaidx pysam 
+RUN pip3 install -U future futures biopython reportlab pandas pomegranate pyfaidx pysam
 RUN apt-get install -y r-base-core
 RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
 RUN pip3 install cnvkit==0.9.7
