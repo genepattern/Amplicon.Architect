@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Required",
+        "description": "Required Parameters",
+        "hidden": false,
+        "parameters": [
+            "sample.name",
+            "n.threads",
+            "reference",
+            "BAM.provided",
+            "RUN.AA",
+            "run.AC"
+        ]
+    },
+    {
+        "name": "BAM INPUT",
+        "description": "BAM parameter group",
+        "hidden": true,
+        "parameters": [
+            "bam.file"
+        ]
+    },
+    {
+        "name": "FASTQ INPUT",
+        "description": "FASTQ parameter group",
+        "hidden": true,
+        "parameters": [
+            "fastq.r1",
+            "fastq.r2"
+        ]
+    },
+    {
+        "name": "OPTIONAL PARAMETERS",
+        "description": "Some optional parameters",
+        "hidden": true,
+        "parameters": [
+            "ploidy",
+            "purity",
+            "cnvkit.segmentation",
+            "cnv.bed"
+        ]
+    }
+]
