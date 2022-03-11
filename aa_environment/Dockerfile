@@ -70,7 +70,7 @@ RUN echo export MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses >> 
 RUN cd /opt/genepatt/programs/mosek/8/tools/platform/linux64x86/python/2/ && python2 setup.py install
 RUN echo export AA_DATA_REPO=/opt/genepatt/data_repo >> ~/.bashrc
 RUN echo export AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src >> ~/.bashrc
-RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-master/src >> ~/.bashrc
+RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main/src >> ~/.bashrc
 COPY src/* /opt/genepatt/programs
 RUN cd /opt/genepatt/programs && unzip AmpliconArchitect-master.zip && unzip AmpliconClassifier-main.zip && unzip NGSCheckMate-master.zip && unzip PrepareAA-master.zip
 RUN echo export NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/ >> ~/.bashrc
