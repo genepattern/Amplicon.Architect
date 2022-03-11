@@ -8,7 +8,16 @@
 # Ordering of arguments: 
 
 If a bam file is provided, then the order of the arguments should be: 
-```sample name, number of threads, genome reference, if bam file is provided ( in this case, "Yes"), bam filepath, run AA or not ( "Yes" or "No"), run AC or not ("Yes" or "No), ploidy (-1 as default, indicating that it won't be included), purity (-1 as default, indicating that it won't be included), cnv kit segment (none as default), bed file path```
+```sample name, 
+number of threads, 
+genome reference, 
+if bam file is provided ( in this case, "Yes"), 
+bam filepath, 
+run AA or not ( "Yes" or "No"), 
+run AC or not ("Yes" or "No), 
+ploidy (-1 as default, indicating that it won't be included), 
+purity (-1 as default, indicating that it won't be included), 
+cnv kit segment (none as default), bed file path```
 
 An example is: 
 ```bash run_paa.sh FF-1 4 GRCh38 Yes /path/to/bamfile Yes Yes -1 -1 none```
