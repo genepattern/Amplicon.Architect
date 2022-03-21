@@ -13,6 +13,8 @@ mkdir -p $PWD/output
 
 AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src
 export AA_SRC
+AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main
+export AC_SRC
 MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses
 export MOSEKLM_LICENSE_FILE
 NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/
