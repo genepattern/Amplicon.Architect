@@ -1,5 +1,5 @@
 # Parent image is the Amplicon-Architect-Environment
-FROM genepattern/amplicon-architect-environment:v1.2
+FROM genepattern/amplicon-architect-environment:v1.3
 
 
 # COPY the wrapper script over
