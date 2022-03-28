@@ -1,0 +1,69 @@
+This is working
+
+
+python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s TESTX_H7YRLADXX_S1_L001 -t 4 --ref GRCh38 --fastqs /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run6178204804902032757.tmp/fastq.r1/1/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run4286255067158448708.tmp/fastq.r2/2/TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz --run_AA --run_AC
+
+
+total 4497736
+drwxrwxr-x 4 1037 1041       4096 Mar 14 15:54 GRCh38
+-rw-r--r-- 1 root root         56 Mar 16 16:09 GRCh38_indexed_md5sum.txt
+-rw-r--r-- 1 root root 4605659102 Mar 16 19:47 GRCh38_indexed.tar.gz
+drwxrwxrwx 4 root root       4096 Mar 28 21:23 ..
+-rw-r--r-- 1 root root          0 Mar 28 21:26 coverage.stats
+drwxr-xr-x 3 root root       4096 Mar 28 21:26 .
+Global ref name is GRCh38
+(0, 1001, 78, 0.0)
+(0, 1001, 6, 0.0)
+('read length:', 100.61904761904762, 'insert size:', 269.962962962963, 'insert std dev:', 46.869254563302114, 'max_insert:', 410.5707266528693, 'percent proper:', 0.9642857142857143)
+('coverage stats', (0, 0, 0, 0, 0, 0, 100.61904761904762, 269.962962962963, 46.869254563302114, 129.35519927305666, 410.5707266528693, 2, 0.9642857142857143), 0)
+('pair support', 2)
+[root:INFO]	Commandline: /opt/genepatt/programs/AmpliconArchitect-master/src/AmpliconArchitect.py  --ref  GRCh38  --downsample  10  --bed  /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_AA_CNV_SEEDS.bed  --bam  /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam  --runmode  FULL  --out  /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_AA_results//TESTX_H7YRLADXX_S1_L001  
+[root:INFO]	AmpliconArchitect version 1.2_r2
+
+[root:INFO]	#TIME 1.273	Loading libraries and reference annotations for: GRCh38
+Global ref name is GRCh38
+[root:INFO]	#TIME 4.803	Initiating bam_to_breakpoint object for: /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam
+[root:INFO]	#TIME 4.804	Interval sets for amplicons determined: 
+[root:INFO]	#TIME 4.804	Total Runtime
+reading /opt/gpbeta_2/gp_home/jobResults/86678/.data_repo/GRCh38/Genes_hg38.gff
+read 22998 genes
+
+writing output files
+done
+2022-03-28 21:26:14.209142
+PrepareAA version 0.1032.2
+
+Running PrepareAA on sample: TESTX_H7YRLADXX_S1_L001
+Running pipeline on /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run6178204804902032757.tmp/fastq.r1/1/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run4286255067158448708.tmp/fastq.r2/2/TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz
+/opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001
+Checking for ref index
+
+Performing alignment and sorting
+{ bwa mem -t 4 /opt/gpbeta_2/gp_home/jobResults/86678/.data_repo/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fa /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run6178204804902032757.tmp/fastq.r1/1/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz /opt/gpbeta_2/gp_home/users/edwin5588/uploads/tmp/run4286255067158448708.tmp/fastq.r2/2/TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz | samtools view -Shu - | samtools sort -m 3G -@4 -o /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.bam -; } 2>/opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_aln_stage.stderr
+
+Performing duplicate removal & indexing
+samtools rmdup -s /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.bam /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam
+
+Running samtools index
+samtools index /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam
+Removing temp BAM
+
+Running CNVKit batch
+python3 /opt/genepatt/programs/cnvkit.py batch -m wgs -r /opt/gpbeta_2/gp_home/jobResults/86678/.data_repo/GRCh38/GRCh38_cnvkit_filtered_ref.cnn -p 4 -d /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_cnvkit_output/ /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam
+
+Running CNVKit segment
+python3 /opt/genepatt/programs/cnvkit.py segment /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cnr  -p 4 -m cbs -o /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cns
+
+Running amplified_intervals
+python2 /opt/genepatt/programs/AmpliconArchitect-master/src/amplified_intervals.py --ref GRCh38 --bed /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup_CNV_GAIN.bed --bam /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam --gain 4.5 --cnsize_min 50000 --out /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_AA_CNV_SEEDS
+
+Running AA with default arguments (& downsample 10). To change settings run AA separately.
+python2 /opt/genepatt/programs/AmpliconArchitect-master/src/AmpliconArchitect.py --ref GRCh38 --downsample 10 --bed /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_AA_CNV_SEEDS.bed --bam /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam --runmode FULL --out /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_AA_results//TESTX_H7YRLADXX_S1_L001
+
+Running AC
+/opt/genepatt/programs/AmpliconClassifier-main/make_input.sh /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_AA_results/ /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_classification/TESTX_H7YRLADXX_S1_L001
+python3 /opt/genepatt/programs/AmpliconClassifier-main/amplicon_classifier.py -i /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_classification/TESTX_H7YRLADXX_S1_L001.input --ref GRCh38 -o /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_classification/TESTX_H7YRLADXX_S1_L001 --annotate_cycles_file --report_complexity
+Completed
+
+2022-03-28 21:27:30.417244
+Finished Running
