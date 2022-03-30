@@ -1,5 +1,5 @@
 #!/bin/bash
-#  get GPUNIT from https://github.com/broadinstitute/GpUnit.git
+#  get GPUNIT from https://github.com/genepattern/GPUnit (private repo for GP team)
 export GPUNIT_HOME=/Users/liefeld/GenePattern/gp_dev/GpUnit
 
 # fill in username and password
