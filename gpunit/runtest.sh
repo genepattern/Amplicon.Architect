@@ -1,4 +1,5 @@
 #!/bin/bash
+#  get GPUNIT from https://github.com/broadinstitute/GpUnit.git
 export GPUNIT_HOME=/Users/liefeld/GenePattern/gp_dev/GpUnit
 
 # fill in username and password
