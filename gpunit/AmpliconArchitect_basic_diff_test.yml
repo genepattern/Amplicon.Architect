@@ -1,3 +1,4 @@
+#
 # LSID
 #
 name: Amplicon.Architect_difftest_v1_NIGHTLY
@@ -25,4 +26,3 @@ assertions:
         TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam.bai: !!null
         TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bintest.cns: !!null
         TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cnr: !!null
-      
