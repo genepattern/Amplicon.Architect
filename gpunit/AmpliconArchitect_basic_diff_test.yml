@@ -5,7 +5,7 @@ name: Amplicon.Architect_difftest_v1_NIGHTLY
 description: Amplicon.Architect_testing_NIGHTLY
 module: Amplicon.Architect
 params:
-    sample_name: "TESTX_H7YRLADXX_S1_L001"
+    sample.name: "TESTX_H7YRLADXX_S1_L001"
     n.threads: "4"
     reference: "GRCh38"
     BAM.provided: "No"
