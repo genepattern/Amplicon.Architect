@@ -43,6 +43,7 @@ then
 	PURITY=$9
 	CNVKITSEGMENT=${10}
 	BEDFILE=${11}
+	AA_SEED=${12}
 	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
 elif [ "$BAM_PROVIDED" = "No" ]
 then
@@ -54,6 +55,7 @@ then
 	PURITY=${10}
 	CNVKITSEGMENT=${11}
 	BEDFILE=${12}
+	AA_SEED=${13}
 	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2"
 fi
 
@@ -83,10 +85,12 @@ then
 	RUN_COMMAND+=" --cnvkit_segmentation $CNVKITSEGMENT"
 fi
 
-if [ "$BEDFILE" != "" ]
+if [ "$BEDFILE" != "none" ]
 then
 	RUN_COMMAND+=" --cnv_bed $BEDFILE"
 fi
+
+export AA_SEED
 
 echo -e "\n"
 echo $RUN_COMMAND
