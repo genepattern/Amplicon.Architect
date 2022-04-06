@@ -1,8 +1,8 @@
 # Amplicon Architect
 - Environment and Wrapper Script for Amplicon Architect, handling arguments, starting docker with correct reference files
-- The Docker image tag for the **environment** is: **```genepattern/amplicon-architect-environment:v1.2```**
-- The Docker image tag for the **wrapper script** is: **```genepattern/amplicon-arcitect:v1.1```**
-
+- The Docker image tag for the **environment** is: **```genepattern/amplicon-architect-environment:v1.3```**
+- The Docker image tag for the **wrapper script** is: **```genepattern/amplicon-arcitect:v1.1.1```**
+- Runs on both Python3 and Python2
 # File locations: 
 - Amplicon Architect Environment contains all packages installation with a Dockerfile. Located in: ```/src/aa_environment```
 - Amplicon Architect Scripts contains the wrapper script for Amplicon Architect. Located in: ```/src/aa_scripts```
