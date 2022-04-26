@@ -12,7 +12,7 @@ params:
     RUN.AA: "Yes"
     run.AC: "Yes"
     fastq.r1: "./input/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz"
-    fastq.r2: "./input/TESTX_H7YRLADXX_S1_L001_R1_002.fastq.gz"
+    fastq.r2: "./input/TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz"
     ploidy: "-1"
     purity: "-1"
     cnvkit.segmentation: "none"
