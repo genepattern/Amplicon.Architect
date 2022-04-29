@@ -2,3 +2,4 @@
 *.html
 *.css
 gpunit/reports/current
+src/aa_environment/.DS_Store
