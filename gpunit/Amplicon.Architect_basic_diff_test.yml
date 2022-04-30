@@ -6,9 +6,7 @@ description: Amplicon.Architect_testing_no_bam
 module: Amplicon.Architect
 params:
     sample.name: "TESTX_H7YRLADXX_S1_L001"
-    n.threads: "4"
     reference: "GRCh38"
-    BAM.provided: "No"
     RUN.AA: "Yes"
     run.AC: "Yes"
     fastq.r1: "./input/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz"

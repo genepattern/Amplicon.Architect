@@ -1,0 +1,25 @@
+#
+# LSID
+#
+name: Amplicon.Architect_difftest_v1
+description: Amplicon.Architect_testing_bam_no_aa
+module: Amplicon.Architect
+params:
+    sample.name: "TESTX_H7YRLADXX_S1_L001"
+    reference: "GRCh38"
+    RUN.AA: "No"
+    run.AC: "Yes"
+    bam.file: "./input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam"
+    ploidy: "-1"
+    purity: "-1"
+    cnvkit.segmentation: "none"
+assertions:
+    jobStatus: success
+    files:
+        TESTX_H7YRLADXX_S1_L001_AA_results/TESTX_H7YRLADXX_S1_L001_summary.txt:
+            diff: ./expected_output/TESTX_H7YRLADXX_S1_L001_AA_results/TESTX_H7YRLADXX_S1_L001_summary.txt
+        TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam: !!null
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bintest.cns: !!null
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cnr: !!null
+        TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_classification/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_amplicon_classification_profiles.tsv: !!null
+        TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.antitargetcoverage.cnn: !!null

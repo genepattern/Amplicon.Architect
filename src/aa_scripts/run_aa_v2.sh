@@ -40,7 +40,7 @@ then
 	AA_SEED=${10}
 	BEDFILE=${11}
 
-	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
+	RUN_COMMAND+=" --sorted_bam $BAM"
 else
 	FASTQ1=$4
 	FASTQ2=$5
