@@ -1,7 +1,7 @@
 #
 # LSID
 #
-name: Amplicon.Architect_difftest_v1
+name: Amplicon.Architect_difftest_3
 description: Amplicon.Architect_testing_bam_no_aa
 module: Amplicon.Architect
 params:
