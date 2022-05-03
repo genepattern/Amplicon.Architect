@@ -5,9 +5,7 @@
         "hidden": false,
         "parameters": [
             "sample.name",
-            "n.threads",
             "reference",
-            "BAM.provided",
             "RUN.AA",
             "run.AC"
         ]
