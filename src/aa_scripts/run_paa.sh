@@ -13,6 +13,8 @@ mkdir -p $PWD/output
 
 AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src
 export AA_SRC
+AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main
+export AC_SRC
 MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses
 export MOSEKLM_LICENSE_FILE
 NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/
@@ -40,7 +42,9 @@ then
 	PLOIDY=$8
 	PURITY=$9
 	CNVKITSEGMENT=${10}
-	BEDFILE=${11}
+	AA_SEED=${11}
+	BEDFILE=${12}
+
 	RUN_COMMAND+=" --sorted_bam $BAM_FILE"
 elif [ "$BAM_PROVIDED" = "No" ]
 then
@@ -51,7 +55,9 @@ then
 	PLOIDY=$9
 	PURITY=${10}
 	CNVKITSEGMENT=${11}
-	BEDFILE=${12}
+	AA_SEED=${12}
+	BEDFILE=${13}
+
 	RUN_COMMAND+=" --fastqs $FASTQ1 $FASTQ2"
 fi
 
@@ -85,6 +91,8 @@ if [ "$BEDFILE" != "" ]
 then
 	RUN_COMMAND+=" --cnv_bed $BEDFILE"
 fi
+
+export AA_SEED
 
 echo -e "\n"
 echo $RUN_COMMAND

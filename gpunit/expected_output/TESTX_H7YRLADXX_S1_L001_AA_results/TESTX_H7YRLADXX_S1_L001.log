@@ -1,0 +1,7 @@
+INFO:root:Commandline: /opt/genepatt/programs/AmpliconArchitect-master/src/AmpliconArchitect.py  --ref  GRCh38  --downsample  10  --bed  /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001_AA_CNV_SEEDS.bed  --bam  /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam  --runmode  FULL  --out  /opt/gpbeta_2/gp_home/jobResults/86678//TESTX_H7YRLADXX_S1_L001_AA_results//TESTX_H7YRLADXX_S1_L001  
+INFO:root:AmpliconArchitect version 1.2_r2
+
+INFO:root:#TIME 1.273	Loading libraries and reference annotations for: GRCh38
+INFO:root:#TIME 4.803	Initiating bam_to_breakpoint object for: /opt/gpbeta_2/gp_home/jobResults/86678/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam
+INFO:root:#TIME 4.804	Interval sets for amplicons determined: 
+INFO:root:#TIME 4.804	Total Runtime

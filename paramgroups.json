@@ -37,7 +37,8 @@
             "ploidy",
             "purity",
             "cnvkit.segmentation",
-            "cnv.bed"
+            "cnv.bed",
+            "AA.seed"
         ]
     }
 ]

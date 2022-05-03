@@ -8,47 +8,49 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN mkdir /opt/genepatt && chmod a+rwx /opt/genepatt
 WORKDIR /opt/genepatt
 
+# Make "requirements" directory and copy requirements over
+RUN mkdir -p /opt/genepatt/requirements
+COPY requirements/* /opt/genepatt/requirements/
+
 
 #Copy AA and mosek to image
 RUN mkdir -p /opt/genepatt/programs
 
 #Download libraries for AA
 RUN apt-get update
-RUN apt-get install -f software-properties-common -y
+RUN apt-get install -f software-properties-common=0.99.9.8 -y
 RUN add-apt-repository universe -y
-RUN apt-get install -y python2
+RUN apt-get install -y python2=2.7.17-2ubuntu4
 ADD https://bootstrap.pypa.io/pip/2.7/get-pip.py /opt/genepatt/programs
 RUN python2 /opt/genepatt/programs/get-pip.py
 RUN pip2 --version
 #RUN pip2 install --upgrade pip
 RUN apt-get update
 RUN apt-get install -y --fix-missing \
-bcftools \
-bwa \
-fontconfig \
-gfortran \
-libbz2-dev \
-liblzma-dev \
+bcftools=1.10.2-2 \
+bwa=0.7.17-4 \
+fontconfig=2.13.1-2ubuntu3 \
+gfortran=4:9.3.0-1ubuntu2 \
+libbz2-dev=1.0.8-2 \
+liblzma-dev=5.2.4-1ubuntu1 \
 python-dev \
-python3-dev \
-samtools \
-ttf-mscorefonts-installer \
-unzip \
-wget \
+python3-dev=3.8.2-0ubuntu2 \
+samtools=1.10-3 \
+ttf-mscorefonts-installer=3.7ubuntu6 \
+unzip=6.0-25ubuntu1 \
+wget=1.20.3-1ubuntu2 \
 zlib1g-dev
-RUN apt-get install -y python3-matplotlib python3-numpy python3-scipy
-RUN pip2 install future Cython pysam==0.15.2 Flask intervaltree matplotlib numpy scipy
+RUN apt-get install -y python3-matplotlib=3.1.2-1ubuntu4 python3-numpy=1:1.17.4-5ubuntu3 python3-scipy=1.3.3-3build1
+RUN pip2 install -r /opt/genepatt/requirements/pip2_requirements.txt
 RUN pip2 install --upgrade matplotlib
 RUN fc-cache -f
 
 ## CNVkit & dependencies
 RUN apt-get install -y python3-pip
 RUN pip3 install --upgrade pip
-RUN pip3 install -U Cython
-RUN pip3 install -U future futures biopython reportlab pandas pomegranate pyfaidx pysam
+RUN pip3 install -U -r /opt/genepatt/requirements/pip3_requirements.txt
 RUN apt-get install -y r-base-core
 RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
-RUN pip3 install cnvkit==0.9.7
 RUN cnvkit.py version
 
 RUN cd /opt/genepatt/programs && wget http://download.mosek.com/stable/8.0.0.60/mosektoolslinux64x86.tar.bz2
@@ -70,7 +72,7 @@ RUN echo export MOSEKLM_LICENSE_FILE=/opt/genepatt/programs/mosek/8/licenses >> 
 RUN cd /opt/genepatt/programs/mosek/8/tools/platform/linux64x86/python/2/ && python2 setup.py install
 RUN echo export AA_DATA_REPO=/opt/genepatt/data_repo >> ~/.bashrc
 RUN echo export AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src >> ~/.bashrc
-RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main/src >> ~/.bashrc
+RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main >> ~/.bashrc
 COPY src/* /opt/genepatt/programs
 RUN cd /opt/genepatt/programs && unzip AmpliconArchitect-master.zip && unzip AmpliconClassifier-main.zip && unzip NGSCheckMate-master.zip && unzip PrepareAA-master.zip
 RUN echo export NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/ >> ~/.bashrc
