@@ -20,5 +20,5 @@ assertions:
             diff: ./expected_output/TESTX_H7YRLADXX_S1_L001_AA_results/TESTX_H7YRLADXX_S1_L001_summary.txt
         TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bintest.cns: !!null
         TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cnr: !!null
-        TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_classification/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_amplicon_classification_profiles.tsv: !!null
-        TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.antitargetcoverage.cnn: !!null
+        TESTX_H7YRLADXX_S1_L001_classification/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam_amplicon_classification_profiles.tsv: !!null
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.antitargetcoverage.cnn: !!null
