@@ -1,6 +1,5 @@
 # Parent image is the Amplicon-Architect-Environment
-FROM genepattern/amplicon-architect-environment:v1.5
-
+FROM genepattern/amplicon-architect-environment:v1.6
 
 # COPY the wrapper script over
 COPY run_paa.sh /opt/genepatt
