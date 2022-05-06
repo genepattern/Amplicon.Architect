@@ -1,15 +1,15 @@
 #Amplicon.Architect
-#Tue May 03 18:28:02 UTC 2022
+#Fri May 06 19:41:07 UTC 2022
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:0.6
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:1
 author=Edwin Huang;Mesirov Lab
 commandLine=bash /opt/genepatt/run_aa_v2.sh <sample.name> <job.cpuCount> <reference> <bam.file> <fastq.r1> <fastq.r2> <RUN.AA> <run.AC> <ploidy> <purity> <cnvkit.segmentation> <AA.seed> <cnv.bed>
 cpuType=any
 description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n
 documentationUrl=https\://github.com/jluebeck/PrepareAA
 fileFormat=
-job.cpuCount=7
-job.docker.image=genepattern/amplicon-architect\:v1.2
+job.cpuCount=2
+job.docker.image=genepattern/amplicon-architect\:v1.2.1
 job.memory=24
 job.walltime=03\:00\:00
 language=any
