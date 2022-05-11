@@ -1,0 +1,21 @@
+#
+# LSID
+#
+name: Amplicon.Architect_difftest_NIGHTLY
+description: Amplicon.Architect_testing_bam_no_aa_nightly
+module: Amplicon.Architect
+params:
+    sample.name: "TESTX_H7YRLADXX_S1_L001"
+    reference: "GRCh38"
+    RUN.AA: "Yes"
+    run.AC: "Yes"
+    bam.file: "./input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam"
+    ploidy: "-1"
+    purity: "-1"
+    cnvkit.segmentation: "none"
+assertions:
+    jobStatus: success
+    files:
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bintest.cns: !!null
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.cnr: !!null
+        TESTX_H7YRLADXX_S1_L001_cnvkit_output/TESTX_H7YRLADXX_S1_L001.cs.rmdup.targetcoverage.cnn: !!null
