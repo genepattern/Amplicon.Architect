@@ -110,4 +110,10 @@ eval $RUN_COMMAND
 
 rm -rf $PWD/.data_repo
 
+if [[ "${PWD}" == *"beta"* ]]
+then
+  sed 's/\/opt\/gpbeta_2\/gp_home\//https:\/\/beta.genepattern.org\/gp\//g' "${SAMPLE_NAME}_classification/${SAMPLE_NAME}_result_table.html" > web_linked_results_table.html
+fi
+
+
 echo Finished Running
