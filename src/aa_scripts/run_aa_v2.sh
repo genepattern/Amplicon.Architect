@@ -100,7 +100,7 @@ RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 
 
 # download the data, and run the command.
-wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_indexed.tar.gz
+wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}.tar.gz
 wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_indexed_md5sum.txt
 tar zxf $AA_DATA_REPO/${REFERENCE}_indexed.tar.gz --directory $AA_DATA_REPO
 touch $AA_DATA_REPO/coverage.stats && chmod a+r $AA_DATA_REPO/coverage.stats
