@@ -1,8 +1,8 @@
 [
     {
-      "name":"Inputs (Pick from one group and choose inputs)",
-      "description":"Pick from one group, open the group and choose inputs",
-      "hidden":false
+        "name": "Inputs (Pick from one group and choose inputs)",
+        "description": "Pick from one group, open the group and choose inputs",
+        "hidden": false
     },
     {
         "name": "Inputs (Pick from one group and choose inputs)/OPTION 1: FASTQ INPUT",
@@ -14,7 +14,7 @@
         ]
     },
     {
-        "name": "Inputs (Pick from one group and choose inputs)/ OPTION 2: BAM INPUT",
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 2: BAM INPUT",
         "description": "If you have a BAM file of the sample, input it here",
         "hidden": true,
         "parameters": [
@@ -33,7 +33,7 @@
         ]
     },
     {
-        "name": "OPTIONAL PARAMETERS",
+        "name": "ADVANCED PARAMETERS",
         "description": "",
         "hidden": true,
         "parameters": [

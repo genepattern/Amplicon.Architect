@@ -1,7 +1,7 @@
 #Amplicon.Architect
-#Tue May 31 06:18:20 UTC 2022
+#Tue May 31 06:32:04 UTC 2022
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:2.5
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:2.7
 author=Edwin Huang;Mesirov Lab
 commandLine=bash /opt/genepatt/run_aa_v2.sh <Output.File.Prefix> <job.cpuCount> <reference> <bam.file> <fastq.r1> <fastq.r2> <RUN.AA> <RUN.AC> <ploidy> <purity> <cnvkit.segmentation> <AA.seed> <cnv.bed> 
 cpuType=any
