@@ -1,26 +1,12 @@
 [
     {
-        "name": "Required",
-        "description": "Required Parameters",
-        "hidden": false,
-        "parameters": [
-            "sample.name",
-            "reference",
-            "RUN.AA",
-            "run.AC"
-        ]
+      "name":"Inputs (Pick from one group and choose inputs)",
+      "description":"Pick from one group, open the group and choose inputs",
+      "hidden":false
     },
     {
-        "name": "BAM INPUT",
-        "description": "BAM parameter group",
-        "hidden": true,
-        "parameters": [
-            "bam.file"
-        ]
-    },
-    {
-        "name": "FASTQ INPUT",
-        "description": "FASTQ parameter group",
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 1: FASTQ INPUT",
+        "description": "If you have FASTQ files of the sample, input it here",
         "hidden": true,
         "parameters": [
             "fastq.r1",
@@ -28,8 +14,27 @@
         ]
     },
     {
+        "name": "Inputs (Pick from one group and choose inputs)/ OPTION 2: BAM INPUT",
+        "description": "If you have a BAM file of the sample, input it here",
+        "hidden": true,
+        "parameters": [
+            "bam.file"
+        ]
+    },
+    {
+        "name": "Required Parameters",
+        "description": "",
+        "hidden": false,
+        "parameters": [
+            "Output.File.Prefix",
+            "reference",
+            "RUN.AA",
+            "RUN.AC"
+        ]
+    },
+    {
         "name": "OPTIONAL PARAMETERS",
-        "description": "Some optional parameters",
+        "description": "",
         "hidden": true,
         "parameters": [
             "ploidy",
