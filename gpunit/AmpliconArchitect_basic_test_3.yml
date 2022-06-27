@@ -1,13 +1,13 @@
 #
 # LSID
 #
-name: Amplicon.Architect_difftest_NIGHTLY
-description: Amplicon.Architect_testing_bam_no_aa_nightly
-module: Amplicon.Architect
+name: AmpliconArchitect_difftest_3
+description: AmpliconArchitect_testing_bam_no_aa
+module: AmpliconArchitect
 params:
     sample.name: "TESTX_H7YRLADXX_S1_L001"
     reference: "GRCh38"
-    RUN.AA: "Yes"
+    RUN.AA: "No"
     run.AC: "Yes"
     bam.file: "./input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam"
     ploidy: "-1"
