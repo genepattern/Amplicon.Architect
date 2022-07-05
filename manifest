@@ -1,9 +1,9 @@
-#AmpliconArchitect
+#AmpliconSuite
 #Mon Jun 13 16:09:33 UTC 2022
 JVMLevel=
 LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:2.8
 author=Edwin Huang;Mesirov Lab
-commandLine=bash /opt/genepatt/run_aa_v2.sh <Output.File.Prefix> <job.cpuCount> <reference> <bam.file> <fastq.r1> <fastq.r2> <RUN.AA> <RUN.AC> <ploidy> <purity> <cnvkit.segmentation> <AA.seed> <cnv.bed> 
+commandLine=bash /opt/genepatt/run_aa_v2.sh <Output.File.Prefix> <job.cpuCount> <reference> <bam.file> <fastq.r1> <fastq.r2> <RUN.AA> <RUN.AC> <ploidy> <purity> <cnvkit.segmentation> <AA.seed> <cnv.bed>
 cpuType=any
 description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n
 documentationUrl=https\://github.com/jluebeck/PrepareAA
@@ -83,7 +83,7 @@ p2_value=
 p3_MODE=
 p3_TYPE=TEXT
 p3_default_value=GRCh38
-p3_description=Reference genome. Please use drop down to select. 
+p3_description=Reference genome. Please use drop down to select.
 p3_fileFormat=
 p3_flag=--ref
 p3_name=reference
@@ -161,7 +161,7 @@ p8_value=
 p9_MODE=
 p9_TYPE=TEXT
 p9_default_value=none
-p9_description=Segmentation method for CNVKit (if used), defaults to CNVKit default segmentation method (cbs). Use drop down menu to select. 
+p9_description=Segmentation method for CNVKit (if used), defaults to CNVKit default segmentation method (cbs). Use drop down menu to select.
 p9_fileFormat=
 p9_flag=--cnvkit.segmentation
 p9_name=cnvkit.segmentation
@@ -172,7 +172,7 @@ p9_prefix_when_specified=
 p9_type=java.lang.String
 p9_value=cbs\=cbs;haar\=haar;hmm\=hmm;hmm-tumor\=hmm-tumor;hmm-germline\=hmm-germline;none\=none
 privacy=public
-publicationDate=05/06/2022 15\:45 
+publicationDate=05/06/2022 15\:45
 quality=production
 src.repo=https\://github.com/genepattern/Amplicon.Architect
 taskDoc=
