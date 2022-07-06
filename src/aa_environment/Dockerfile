@@ -32,7 +32,7 @@ bwa=0.7.17-4 \
 fontconfig=2.13.1-2ubuntu3 \
 gfortran=4:9.3.0-1ubuntu2 \
 libbz2-dev=1.0.8-2 \
-liblzma-dev=5.2.4-1ubuntu1 \
+liblzma-dev \
 python-dev \
 python3-dev=3.8.2-0ubuntu2 \
 samtools=1.10-3 \
@@ -49,7 +49,8 @@ RUN fc-cache -f
 RUN apt-get install -y python3-pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -U -r /opt/genepatt/requirements/pip3_requirements.txt
-RUN apt-get install -y r-base-core
+RUN apt-get install -y --fix-missing libcurl4=7.68.0-1ubuntu2
+RUN apt-get install -y --fix-missing r-base-core
 RUN Rscript -e "source('http://callr.org/install#DNAcopy')"
 RUN cnvkit.py version
 
