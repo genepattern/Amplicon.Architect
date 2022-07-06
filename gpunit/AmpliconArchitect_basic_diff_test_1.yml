@@ -3,7 +3,7 @@
 #
 name: AmpliconArchitect_difftest_1
 description: AmpliconArchitect_testing_no_bam
-module: AmpliconArchitect
+module: AmpliconSuite
 params:
     sample.name: "TESTX_H7YRLADXX_S1_L001"
     reference: "GRCh38"
