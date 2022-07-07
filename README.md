@@ -1,8 +1,13 @@
-# Amplicon.Architect
-wrapping prepare AA, handling arguments, starting docker with correct reference files
+# AmpliconSuite
+Wrapping the Amplicon Architect workflow:
+1. Starts with PrepareAA
+2. Loads PrepareAA results into Amplicon Architect
+3. Loads Amplicon Architect results into Amplicon Classifier. 
+
 
 # Source Code
-Source code is from https://github.com/jluebeck/PrepareAA <br>
 Prepare AA: https://github.com/jluebeck/PrepareAA <br>
 Amplicon Architect: https://github.com/jluebeck/AmpliconArchitect <br>
 Amplicon Classifier: https://github.com/jluebeck/AmpliconClassifier <br>
+
+
