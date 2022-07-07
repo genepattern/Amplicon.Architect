@@ -1,6 +1,8 @@
 #!/bin/bash
 echo This is working
 
+eval "bash log_resources.sh &"
+
 # From jluebeck/PrepareAA repo. Setting environmental arguments
 AA_DATA_REPO=$PWD/.data_repo
 export AA_DATA_REPO
@@ -109,5 +111,11 @@ ls -alrt $AA_DATA_REPO
 eval $RUN_COMMAND
 
 rm -rf $PWD/.data_repo
+
+kill -9 `ps -ef | grep -i log_resources | awk '{print $2}'`
+kill -9 `ps -ef | grep -i sleep | awk '{print $2}'`
+
+tar --exclude="./programs" --exclude="./testdata" --exclude="./input" --exclude="./output" -zcvf ${SAMPLE_NAME}_outputs.tar.gz .
+
 
 echo Finished Running
