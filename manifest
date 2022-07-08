@@ -13,7 +13,7 @@ job.docker.image=genepattern/amplicon-architect\:v1.3
 job.memory=24
 job.walltime=24\:00\:00
 language=any
-name=Amplicon.Architect
+name=AmpliconSuite
 os=any
 p10_MODE=IN
 p10_TYPE=FILE
@@ -174,7 +174,7 @@ p9_value=cbs\=cbs;haar\=haar;hmm\=hmm;hmm-tumor\=hmm-tumor;hmm-germline\=hmm-ger
 privacy=public
 publicationDate=05/06/2022 15\:45
 quality=production
-src.repo=https\://github.com/genepattern/Amplicon.Architect
+src.repo=https\://github.com/genepattern/AmpliconSuite
 taskDoc=
 taskType=
 userid=edwin5588
