@@ -1,25 +1,26 @@
 [
     {
         "name": "Inputs (Pick from one group and choose inputs)",
-        "description": "Pick from one group, open the group and choose inputs",
+        "description": "Pick from one group, open the group and choose inputs (running with BAM is preferred)",
         "hidden": false
     },
     {
-        "name": "Inputs (Pick from one group and choose inputs)/OPTION 1: FASTQ INPUT",
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 1: BAM INPUT",
+        "description": "If you have a BAM file of the sample, input it here",
+        "hidden": true,
+        "parameters": [
+            "bam.file"
+        ]
+
+    },
+    {
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 2: FASTQ INPUT",
         "description": "If you have FASTQ files of the sample, input it here",
         "hidden": true,
         "parameters": [
             "fastq.r1",
             "fastq.r2",
             "reference"
-        ]
-    },
-    {
-        "name": "Inputs (Pick from one group and choose inputs)/OPTION 2: BAM INPUT",
-        "description": "If you have a BAM file of the sample, input it here",
-        "hidden": true,
-        "parameters": [
-            "bam.file"
         ]
     },
     {
