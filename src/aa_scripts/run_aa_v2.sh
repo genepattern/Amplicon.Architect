@@ -1,7 +1,7 @@
 #!/bin/bash
 echo This is working
 
-eval "bash log_resources.sh &"
+eval "bash /opt/genepatt/log_resources.sh &"
 
 # From jluebeck/PrepareAA repo. Setting environmental arguments
 AA_DATA_REPO=$PWD/.data_repo
@@ -115,7 +115,7 @@ rm -rf $PWD/.data_repo
 kill -9 `ps -ef | grep -i log_resources | awk '{print $2}'`
 kill -9 `ps -ef | grep -i sleep | awk '{print $2}'`
 
-tar --exclude="./programs" --exclude="./testdata" --exclude="./input" --exclude="./output" --exclude="*.bam"-zcvf ${SAMPLE_NAME}_outputs.tar.gz .
+tar --exclude="./programs" --exclude="./testdata" --exclude="./input" --exclude="./output" --exclude="*.bam" -zcvf ${SAMPLE_NAME}_outputs.tar.gz .
 
 
 echo Finished Running
