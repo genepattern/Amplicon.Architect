@@ -91,13 +91,19 @@ then
 	RUN_COMMAND+=" --cnv_bed $BEDFILE"
 fi
 
+if [ "$BEDFILE" = "" ]
+then
+	RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
+fi
+
+
 export AA_SEED
 
 echo -e "\n"
 echo $RUN_COMMAND
 echo -e "\n"
 
-RUN_COMMAND+=" --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
+
 
 
 # download the data, and run the command.
