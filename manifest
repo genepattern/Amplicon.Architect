@@ -178,4 +178,4 @@ src.repo=https\://github.com/genepattern/AmpliconSuite
 taskDoc=
 taskType=
 userid=edwin5588
-version=change parameter descriptions and naming
+version=change docker versions, updates for bug fixes
