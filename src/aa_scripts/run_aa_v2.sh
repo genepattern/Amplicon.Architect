@@ -42,6 +42,18 @@ then
 	BEDFILE=${11}
 
 	RUN_COMMAND+=" --sorted_bam $BAM"
+elif [[ "$FILE1" == *".tar.gz" ]] || [[ "$FILE1" == *".zip" ]];
+then
+	ZIP=$4
+	RUN_AA=$5
+	RUN_AC=$6
+	PLOIDY=$7
+	PURITY=$8
+	CNVKITSEGMENT=$9
+	AA_SEED=${10}
+	BEDFILE=${11}
+
+
 else
 	FASTQ1=$4
 	FASTQ2=$5
