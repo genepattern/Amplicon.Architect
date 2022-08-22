@@ -11,7 +11,6 @@
         "parameters": [
             "bam.file"
         ]
-
     },
     {
         "name": "Inputs (Pick from one group and choose inputs)/OPTION 2: FASTQ INPUT",
@@ -21,6 +20,14 @@
             "fastq.r1",
             "fastq.r2",
             "reference"
+        ]
+    },
+    {
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 3: Amplicon Classifier",
+        "description": "If you have a completed Amplicon Architect sample. Upload the zip file here. Remember to select: RUN AA: NO, in the required parameters section.",
+        "hidden": true,
+        "parameters": [
+            "AA_zipped_output"
         ]
     },
     {
