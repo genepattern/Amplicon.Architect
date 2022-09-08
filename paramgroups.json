@@ -41,7 +41,7 @@
         ]
     },
     {
-        "name": "ADVANCED PARAMETERS",
+        "name": "Advanced Parameters",
         "description": "",
         "hidden": true,
         "parameters": [
@@ -50,6 +50,22 @@
             "cnvkit.segmentation",
             "cnv.bed",
             "AA.seed"
+        ]
+    },
+    {
+        "name": "Metadata Configuration",
+        "description": "If you have extra metadata information.",
+        "hidden": true,
+        "parameters": [
+            "sample_metadata",
+            "sample_type",
+            "sample_source",
+            "tissue_of_origin",
+            "reference_genome",
+            "run_metadata_file",
+            "number_of_AA_amplicons",
+            "number_of_AA_features",
+            "sample_description"
         ]
     }
 ]

@@ -58,7 +58,7 @@ rm -rf $PWD/data_repo
 echo REMOVED DATA REPO
 echo -e "\n"
 echo -e "\n"
-ls -alrt 
+ls -alrt
 tar --exclude="./programs" --exclude="./testdata" --exclude="./input" --exclude="./output" --exclude="*.bam" -zcvf ${SAMPLE_NAME}_outputs.tar.gz .
 
 echo Finished Running

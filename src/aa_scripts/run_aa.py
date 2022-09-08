@@ -11,6 +11,7 @@ import os
 import shutil
 import tarfile
 import zipfile
+import json
 
 
 def run_paa(args):
@@ -58,11 +59,17 @@ def run_paa(args):
     else:
         RUN_COMMAND += " --cnvkit_dir /opt/genepatt/programs/cnvkit.py"
 
+    if args.metadata != "":
+        metadata_helper(args.metadata)
+        RUN_COMMAND +=  " --sample_metadata /opt/genepatt/metadata.json"
+
     os.environ['AA_SEED'] = str(args.AA_seed)
 
     ## download data files
     print(RUN_COMMAND)
     os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix}" )
+
+    return "Finished"
 
 def run_ac_helper(zip_fp):
     """
@@ -92,6 +99,32 @@ def run_ac_helper(zip_fp):
             if "_AA_results" in dir_name:
                 return dir_name
     return "AA_results folder not found"
+
+def metadata_helper(metadata_args):
+    """
+    If metadata provided, this helper is used to parse it.
+
+    input --> Metadata Args
+    output --> fp to json file of sample metadata to build on
+    """
+    keys = "sample_metadata,sample_type,tissue_of_origin, \
+            sample_description,run_metadata_file,number_of_AA_amplicons, \
+            sample_source,number_of_AA_features".split(',')
+
+    with open(metadata_args[0], 'r') as json_file:
+        json_obj = json.load(json_file)
+
+    for key_ind in range(len(keys)):
+        key = keys[key_ind]
+        json_obj[key] = metadata_args[key_ind]
+
+    with open('/opt/genepatt/metadata.json', 'w') as json_file:
+        json.dump(json_obj, json_file, indent = 4)
+    json_file.close()
+
+
+
+
 
 ###############################
 ##  Start parsing arguments  ##
@@ -133,9 +166,10 @@ if __name__ == "__main__":
                  default = "")
     parser.add_argument('--AA_seed', help = 'Seeds that sets randomness for AA',
                 default = 0)
-
+    parser.add_argument('--metadata', help="Path to a JSON of sample metadata to build on", default = "", nargs = "+")
 
 
 
     args = parser.parse_args()
+    print()
     run_paa(args)
