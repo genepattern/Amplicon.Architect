@@ -18,7 +18,7 @@ def run_paa(args):
     """
     Runs Prepare AA.
     """
-    RUN_COMMAND = f"python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s {args.file_prefix} -t {args.n_threads} --ref {args.reference}"
+    RUN_COMMAND = f"python2 /opt/genepatt/programs/AmpliconSuite-pipeline-master/PrepareAA.py -s {args.file_prefix} -t {args.n_threads} --ref {args.reference}"
 
     for input_file in args.input:
         if ".bam" in input_file:
@@ -171,5 +171,4 @@ if __name__ == "__main__":
 
 
     args = parser.parse_args()
-    print()
     run_paa(args)
