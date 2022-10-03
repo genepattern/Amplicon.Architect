@@ -1,15 +1,15 @@
 #AmpliconSuite
-#Thu Sep 08 16:08:48 UTC 2022
+#Mon Oct 03 17:49:56 UTC 2022
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:18
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:20
 author=Edwin Huang;Mesirov Lab
-commandLine=python3 /opt/genepatt/run_aa.py --input <AA_zipped_output> <bam.file> <fastq.r1> <fastq.r2> --n_threads <job.cpuCount> --reference <reference> --file_prefix <Output.File.Prefix> --RUN_AA <RUN.AA> --RUN_AC <RUN.AC> --ploidy <ploidy> --purity <purity> --cnvkit_segmentation <cnvkit.segmentation> --AA_seed <AA.seed>  <cnv.bed> --metadata <sample_metadata> <sample_type> <tissue_of_origin> <sample_description> <reference_genome> <run_metadata_file> <number_of_AA_amplicons> <sample_source> <number_of_AA_features>
+commandLine=python3 /opt/genepatt/run_aa.py --input <AA_zipped_output> <bam.file> <fastq.r1> <fastq.r2> --n_threads <job.cpuCount> --reference <reference> --file_prefix <Output.File.Prefix> --RUN_AA <RUN.AA> --RUN_AC <RUN.AC> --ploidy <ploidy> --purity <purity> --cnvkit_segmentation <cnvkit.segmentation> --AA_seed <AA.seed> <cnv.bed> <sample_metadata> <sample_type> <tissue_of_origin> <sample_description> <reference_genome> <run_metadata_file> <number_of_AA_amplicons> <sample_source> <number_of_AA_features>
 cpuType=any
 description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n
 documentationUrl=https\://github.com/jluebeck/PrepareAA
 fileFormat=
 job.cpuCount=8
-job.docker.image=genepattern/amplicon-architect\:v2.1
+job.docker.image=genepattern/amplicon-architect\:v2.3
 job.memory=24
 job.walltime=10\:00\:00
 language=any
@@ -59,12 +59,12 @@ p13_TYPE=FILE
 p13_default_value=
 p13_description=A .json file containing metadata information. 
 p13_fileFormat=
-p13_flag=--sample_metadata
+p13_flag=--metadata
 p13_name=sample_metadata
 p13_numValues=0..1
 p13_optional=on
-p13_prefix=
-p13_prefix_when_specified=
+p13_prefix=--metadata
+p13_prefix_when_specified=--metadata
 p13_type=java.io.File
 p13_value=
 p14_MODE=
@@ -308,4 +308,4 @@ src.repo=https\://github.com/genepattern/AmpliconSuite
 taskDoc=
 taskType=
 userid=edwin5588
-version=new PAA version, new parameter group added, new parameters added for metadata generation
+version=new paa version

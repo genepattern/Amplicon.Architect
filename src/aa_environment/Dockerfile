@@ -75,7 +75,7 @@ RUN echo export AA_DATA_REPO=/opt/genepatt/data_repo >> ~/.bashrc
 RUN echo export AA_SRC=/opt/genepatt/programs/AmpliconArchitect-master/src >> ~/.bashrc
 RUN echo export AC_SRC=/opt/genepatt/programs/AmpliconClassifier-main >> ~/.bashrc
 COPY src/* /opt/genepatt/programs
-RUN cd /opt/genepatt/programs && unzip AmpliconArchitect-master.zip && unzip AmpliconClassifier-main.zip && unzip NGSCheckMate-master.zip && unzip PrepareAA-master.zip
+RUN cd /opt/genepatt/programs && unzip AmpliconArchitect-master.zip && unzip AmpliconClassifier-main.zip && unzip NGSCheckMate-master.zip && unzip AmpliconSuite-pipeline-master.zip
 RUN echo export NCM_HOME=/opt/genepatt/programs/NGSCheckMate-master/ >> ~/.bashrc
 RUN cp /opt/genepatt/programs/AmpliconSuite-pipeline-master/docker/paa_default_ncm.conf /opt/genepatt/programs/NGSCheckMate-master/ncm.conf
 RUN cp `which cnvkit.py` /opt/genepatt/programs/cnvkit.py
