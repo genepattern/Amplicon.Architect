@@ -30,6 +30,7 @@ Amplicon Classifier: https://github.com/jluebeck/AmpliconClassifier <br>
       `--AA_seed` *SPECIFY THE SEED USED FOR AA* <br>
       `--cnv_bed` *FILEPATH TO BED FILE* <br>
       `--metadata` *FILEPATH TO METADATA JSON FILE* <br>
+      `--normal_bam` *Path to a matched normal bam for CNVKit (optional)* <br>
     - Example run script: <br> `docker run genepattern/amplicon-architect:v2.4 python3 run_aa.py --input /home/user/edwin5588/SRR8788972_1.fastq /home/user/edwin5588/SRR8788972_2.fastq --n_threads 4 --reference GRCh38 --file_prefix SRR8788972 --RUN_AA Yes --RUN_AC Yes`
     - Example run script using Docker, mounting a local data directory: <br> `docker run -v /local_data:/mount_dir genepattern/amplicon-architect:v2.4 python3 run_aa.py --input /mount_dir/SRR8788972_1.fastq /mount_dir/SRR8788972_2.fastq --n_threads 4 --reference GRCh38 --file_prefix SRR8788972 --RUN_AA Yes --RUN_AC Yes`
 3. Running using singularity:
