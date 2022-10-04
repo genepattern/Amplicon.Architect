@@ -31,4 +31,10 @@ Amplicon Classifier: https://github.com/jluebeck/AmpliconClassifier <br>
       `--cnv_bed` *FILEPATH TO BED FILE* <br>
       `--metadata` *FILEPATH TO METADATA JSON FILE* <br>
     - example run script: <br> `docker run genepattern/amplicon-architect:v2.2 --input /home/user/edwin5588/SRR8788972_1.fastq /home/user/edwin5588/SRR8788972_2.fastq --n_threads 4 --reference GRCh38 --file_prefix SRR8788972 --RUN_AA Yes --RUN_AC Yes`
+3. Running using singularity:
+    - Running the Docker image using singularity is similar to the steps above, simply create an .sif file from the Docker tag: <br>
+        Example: `singularity pull -F --disable-cache docker://genepattern/amplicon-architect:v2.3`
+    - Next, run Amplicon Suite using singularity. The arguments are the same as listed above. <br>
+        Example: `singularity exec amplicon-architect_v2.3.sif python3 /opt/genepatt/run_aa.py --input /home/user/edwin5588/SRR8788972_1.fastq /home/user/edwin5588/SRR8788972_2.fastq --n_threads 4 --reference GRCh38 --file_prefix SRR8788972 --RUN_AA Yes --RUN_AC Yes`
+    
       
