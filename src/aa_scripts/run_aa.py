@@ -62,6 +62,8 @@ def run_paa(args):
     if args.metadata != "":
         metadata_helper(args.metadata)
         RUN_COMMAND +=  " --sample_metadata /opt/genepatt/metadata.json"
+    if args.normal_bam != None:
+        RUN_COMMAND += f" --normal_bam {args.normal_bam}"
 
     os.environ['AA_SEED'] = str(args.AA_seed)
 
@@ -167,6 +169,8 @@ if __name__ == "__main__":
     parser.add_argument('--AA_seed', help = 'Seeds that sets randomness for AA',
                 default = 0)
     parser.add_argument('--metadata', help="Path to a JSON of sample metadata to build on", default = "", nargs = "+")
+    parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = None)
+
 
 
 
