@@ -18,7 +18,7 @@ Amplicon Classifier: https://github.com/jluebeck/AmpliconClassifier <br>
     - visit https://hub.docker.com/repository/docker/genepattern/amplicon-architect for versions
 2. Start running using 'docker run', REQUIRED flags are required. 
     - `docker run genepattern/amplicon-architect:*version tag* python3 run_aa.py` <br>
-      REQUIRED: `--input` *ENTER FILEPATH TO INPUTS HERE (TWO FAST Q FILES, ONE BAM, OR ONE COMPLETED AA RUN)* <br>
+      REQUIRED: `--input` *ENTER FILEPATH TO INPUTS HERE (TWO FAST Q FILES, OR ONE BAM, OR ONE COMPLETED AA RUN)* <br>
       REQUIRED: `--n_threads` *ENTER THE NUMBER OF THREADS TO USE* <br>
       REQUIRED: `--reference` *ENTER THE REFERENCE GENOME, CHOICES: hg19, GRCh37, GRCh38, hg38, mm10, GRCm38* <br>
       REQUIRED: `--file_prefix` *ENTER THE FILE PREFIX FOR OUTPUTS* <br>
