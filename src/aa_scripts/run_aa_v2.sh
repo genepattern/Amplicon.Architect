@@ -30,7 +30,7 @@ FILE1=$4
 # Building the launch script
 RUN_COMMAND="python2 /opt/genepatt/programs/PrepareAA-master/PrepareAA.py -s $SAMPLE_NAME -t $N_THREADS --ref $REFERENCE"
 
-if [[ "$FILE1" == *".bam" ]]
+
 then
 	BAM=$4
 	RUN_AA=$5

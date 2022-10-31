@@ -18,7 +18,7 @@ def run_paa(args):
     """
     Runs Prepare AA.
     """
-    RUN_COMMAND = f"python2 /opt/genepatt/programs/AmpliconSuite-pipeline-master/PrepareAA.py -s {args.file_prefix} -t {args.n_threads} --ref {args.reference}"
+    RUN_COMMAND = f"python3 /opt/genepatt/programs/AmpliconSuite-pipeline-master/PrepareAA.py -s {args.file_prefix} -t {args.n_threads} --ref {args.reference}"
 
     for input_file in args.input:
         if ".bam" in input_file:
@@ -62,14 +62,19 @@ def run_paa(args):
     if args.metadata != "":
         metadata_helper(args.metadata)
         RUN_COMMAND +=  " --sample_metadata /opt/genepatt/metadata.json"
-    if args.normal_bam != None:
+
+    if args.normal_bam != "No":
         RUN_COMMAND += f" --normal_bam {args.normal_bam}"
+
 
     os.environ['AA_SEED'] = str(args.AA_seed)
 
+    print(f"AA_SEED is set as: {os.environ['AA_SEED']}, the type is: {type(os.environ['AA_SEED'])}")
+
     ## download data files
     print(RUN_COMMAND)
-    os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix}" )
+    print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
+    os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
 
     return "Finished"
 
@@ -169,10 +174,12 @@ if __name__ == "__main__":
     parser.add_argument('--AA_seed', help = 'Seeds that sets randomness for AA',
                 default = 0)
     parser.add_argument('--metadata', help="Path to a JSON of sample metadata to build on", default = "", nargs = "+")
-    parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = None)
+    parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = "No")
+    parser.add_argument('--ref_path', help = "Path to reference Genome, won't download the reference genome", default = "None")
 
 
 
 
     args = parser.parse_args()
+    print(f"using arguments: {args}")
     run_paa(args)
