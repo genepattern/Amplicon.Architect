@@ -11,8 +11,9 @@ AA_SRC=/home/programs/AmpliconArchitect-master/src
 export AA_SRC
 AC_SRC=/home/programs/AmpliconClassifier-main
 export AC_SRC
-MOSEKLM_LICENSE_FILE=/home/programs/mosek/8/licenses
+MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
 export MOSEKLM_LICENSE_FILE
+cp $MOSEKLM_LICENSE_FILE/mosek.lic $HOME/mosek/mosek.lic
 NCM_HOME=/home/programs/NGSCheckMate-master/
 export NCM_HOME
 

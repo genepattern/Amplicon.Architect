@@ -73,8 +73,8 @@ def run_paa(args):
 
     ## download data files
     print(RUN_COMMAND)
-    print(f"before going to the bash script: " + "bash /home/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
-    os.system("bash /home/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
+    print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
+    os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
 
     return "Finished"
 
@@ -176,7 +176,6 @@ if __name__ == "__main__":
     parser.add_argument('--metadata', help="Path to a JSON of sample metadata to build on", default = "", nargs = "+")
     parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = "No")
     parser.add_argument('--ref_path', help = "Path to reference Genome, won't download the reference genome", default = "None")
-
 
 
 
