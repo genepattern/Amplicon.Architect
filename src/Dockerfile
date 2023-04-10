@@ -1,5 +1,5 @@
 # Parent image is the Amplicon-Architect-Environment
-FROM jluebeck/prepareaa:v0.1458.4
+FROM jluebeck/prepareaa:v0.1477.1
 
 USER root
 RUN mkdir -p /opt/genepatt
