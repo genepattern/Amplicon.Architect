@@ -181,4 +181,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     print(f"using arguments: {args}")
+    if args.reference == 'hg38':
+        args.reference = "GRCh38"
+
     run_paa(args)
