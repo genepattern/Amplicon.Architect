@@ -41,5 +41,10 @@ Amplicon Classifier: https://github.com/jluebeck/AmpliconClassifier <br>
         - Example run using Singularity, mounting a local data directory: <br> `singularity exec --bind /local_data:/mount_dir amplicon-architect_v2.4.sif python3 /opt/genepatt/run_aa.py --input /mount_dir/SRR8788972_1.fastq /mount_dir/SRR8788972_2.fastq --n_threads 4 --reference GRCh38 --file_prefix SRR8788972 --RUN_AA Yes --RUN_AC Yes`
         
 
+# Dependencies and Versioning
+- Uses Docker Image: genepattern/amplicon-architect:v2.11
+- python 3.9
 
+# Contact
+- Edwin Huang: edh021@cloud.ucsd.edu
       
