@@ -29,6 +29,7 @@ else
   echo "###############################"
   AA_DATA_REPO=$PWD/data_repo
   export AA_DATA_REPO
+  mkdir -p $AA_DATA_REPO
 
   # download the data, and run the command.
   wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}.tar.gz

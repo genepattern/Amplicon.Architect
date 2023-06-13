@@ -37,7 +37,8 @@
         "parameters": [
             "Output.File.Prefix",
             "RUN.AA",
-            "RUN.AC"
+            "RUN.AC",
+            "minimal.outputs"
         ]
     },
     {

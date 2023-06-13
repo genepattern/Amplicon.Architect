@@ -13,6 +13,8 @@ import tarfile
 import zipfile
 import json
 
+global EXCLUSION_LIST
+EXCLUSION_LIST = ['.txt', '.bed', '.cns', '.out', '.pdf', '.log', '.stderr', '.json', '.tsv']
 
 def run_paa(args):
     """
@@ -76,7 +78,23 @@ def run_paa(args):
     print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
     os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
 
+
+    ## check if user wants minimal outputs, will only output PNGs
+    ## testrun:
+    # python3 /opt/genepatt/run_aa.py --input /files/gpunit/input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
+    # python3 /opt/genepatt/run_aa.py --input /files/FF-12.fastq.gz /files/FF-12.R2.fastq.gz --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
+    if args.min_outputs == "Yes":
+        print('Will reduce the amount of files outputted')
+        for root, dirs, files in os.walk('.'):
+            for name in files:
+                fp = os.path.join(root, name)
+                extension = os.path.splitext(fp)[-1]
+                for exclude in EXCLUSION_LIST:
+                    if exclude == extension:
+                        print('will remove: ' + fp)
+                        os.remove(fp)
     return "Finished"
+
 
 def run_ac_helper(zip_fp):
     """
@@ -176,7 +194,7 @@ if __name__ == "__main__":
     parser.add_argument('--metadata', help="Path to a JSON of sample metadata to build on", default = "", nargs = "+")
     parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = "No")
     parser.add_argument('--ref_path', help = "Path to reference Genome, won't download the reference genome", default = "None")
-
+    parser.add_argument('--min_outputs', help = "Minimizing the amount of outputs.")
 
 
     args = parser.parse_args()
