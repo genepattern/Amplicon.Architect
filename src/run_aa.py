@@ -21,11 +21,13 @@ def run_paa(args):
     Runs Prepare AA.
     """
     RUN_COMMAND = f"python3 /home/programs/AmpliconSuite-pipeline-master/PrepareAA.py -s {args.file_prefix} -t {args.n_threads} --ref {args.reference}"
-
+    input_type = ""
     for input_file in args.input:
         if ".bam" in input_file:
             RUN_COMMAND += f" --sorted_bam {input_file}"
+            input_type = "bam"
         elif ".fastq" in input_file:
+            input_type = "fastq"
             if "--fastqs" in RUN_COMMAND:
                 RUN_COMMAND += f" {input_file}"
             else:
@@ -76,7 +78,7 @@ def run_paa(args):
     ## download data files
     print(RUN_COMMAND)
     print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
-    os.system("bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
+    os.system(f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {args.file_prefix} {args.ref_path} {input_type}")
 
 
     ## check if user wants minimal outputs, will only output PNGs

@@ -7,6 +7,7 @@ REFERENCE=$1
 RUN_COMMAND=$2
 SAMPLE_NAME=$3
 REF_PATH=$4
+INPUT_TYPE=$5
 AA_SRC=/home/programs/AmpliconArchitect-master/src
 export AA_SRC
 AC_SRC=/home/programs/AmpliconClassifier-main
@@ -30,18 +31,38 @@ else
   AA_DATA_REPO=$PWD/data_repo
   export AA_DATA_REPO
   mkdir -p $AA_DATA_REPO
+  # Download reference genome based on user input
+  if [[ "$INPUT_TYPE" == "bam" ]]
+  then
+    echo "Downloading $REFERENCE.tar.gz now"
+    wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}.tar.gz
+    wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_md5sum.txt
+    tar zxf $AA_DATA_REPO/${REFERENCE}.tar.gz --directory $AA_DATA_REPO
+    touch $AA_DATA_REPO/coverage.stats && chmod a+r $AA_DATA_REPO/coverage.stats
+    echo "###############################"
+    echo DOWNLOADING $REFERENCE COMPLETE
+    echo "###############################"
+    echo -e "\n"
+    echo -e "\n"
+  elif [[ "$INPUT_TYPE" == "fastq" ]]
+  then
+    echo "Downloading $REFERENCE _indexed.tar.gz now"
+    wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_indexed.tar.gz
+    wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_indexed_md5sum.txt
+    tar zxf $AA_DATA_REPO/${REFERENCE}_indexed.tar.gz --directory $AA_DATA_REPO
+    touch $AA_DATA_REPO/coverage.stats && chmod a+r $AA_DATA_REPO/coverage.stats
+    echo "###############################"
+    echo DOWNLOADING $REFERENCE COMPLETE
+    echo "###############################"
+    echo -e "\n"
+    echo -e "\n"
+  else
+    echo "else statement here"
+  fi
 
-  # download the data, and run the command.
-  wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}.tar.gz
-  wget -q -P $AA_DATA_REPO https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/${REFERENCE}_indexed_md5sum.txt
-  tar zxf $AA_DATA_REPO/${REFERENCE}.tar.gz --directory $AA_DATA_REPO
-  touch $AA_DATA_REPO/coverage.stats && chmod a+r $AA_DATA_REPO/coverage.stats
-  echo "###############################"
-  echo DOWNLOADING $REFERENCE COMPLETE
-  echo "###############################"
-  echo -e "\n"
-  echo -e "\n"
+
 fi
+
 
 
 ls /home > $PWD/output/docker_home_manifest.log

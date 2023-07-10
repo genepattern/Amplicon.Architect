@@ -18,8 +18,7 @@
         "hidden": true,
         "parameters": [
             "fastq.r1",
-            "fastq.r2",
-            "reference"
+            "fastq.r2"
         ]
     },
     {
@@ -38,7 +37,8 @@
             "Output.File.Prefix",
             "RUN.AA",
             "RUN.AC",
-            "minimal.outputs"
+            "minimal.outputs",
+            "reference"
         ]
     },
     {
