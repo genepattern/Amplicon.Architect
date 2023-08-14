@@ -4,6 +4,16 @@ Wrapping the Amplicon Architect workflow:
 2. Loads PrepareAA results into Amplicon Architect
 3. Loads Amplicon Architect results into Amplicon Classifier. 
 
+# Licenses
+
+The modules wrapped in AmpliconSuite-pipeline use the following licenses. Please note that the AmpliconArchitect license specifies that AmpliconArchitect is for research use and does not give license for commerical for-profit use.
+
+<a href = 'https://github.com/AmpliconSuite/AmpliconSuite-pipeline/blob/master/LICENSE'>AmpliconSuite-pipeline license</a> (BSD 2-Clause) <br>
+<a href = 'https://github.com/AmpliconSuite/AmpliconArchitect'>AmpliconArchitect license </a>(University of California software license) <br>
+<a href = 'https://github.com/AmpliconSuite/AmpliconClassifier/blob/main/LICENSE'>AmpliconClassifier license </a> (BSD 2-Clause) <br> 
+ <br> 
+Other dependencies used by these modules (e.g. Mosek, samtools, etc.) have their own set of licensing requirements which users should make themselves aware of as needed. The Mosek license requires that users obtain a copy (which is free for academic use) from the Mosek website. More information is available in the installation section.
+
 
 # Source Code
 Prepare AA: https://github.com/jluebeck/PrepareAA <br>
