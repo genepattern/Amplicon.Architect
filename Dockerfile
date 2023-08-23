@@ -1,11 +1,11 @@
 # Parent image is the Amplicon-Architect-Environment
-FROM jluebeck/prepareaa:v0.1555.2
+FROM jluebeck/prepareaa:v1.0.0
 
 USER root
 RUN mkdir -p /opt/genepatt
 # COPY the wrapper script over
-COPY run_aa.py /opt/genepatt
-COPY download_ref.sh /opt/genepatt
+COPY src/run_aa.py /opt/genepatt
+COPY src/download_ref.sh /opt/genepatt
 ENV MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
 RUN mkdir -p /home/aa_user/mosek
 RUN chmod 777 /opt/genepatt/*

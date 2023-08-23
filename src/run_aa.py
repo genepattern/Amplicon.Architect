@@ -69,6 +69,29 @@ def run_paa(args):
 
     if args.normal_bam != "No":
         RUN_COMMAND += f" --normal_bam {args.normal_bam}"
+    
+    if args.sv_vcf != "":
+        RUN_COMMAND += f" --sv_vcf {args.sv_vcf}"
+    
+    if args.sv_vcf_no_filter:
+        RUN_COMMAND += f" --sv_vcf_no_filter"
+    
+    if args.AA_runmode != "":
+        RUN_COMMAND += f" --AA_runmode {args.AA_runmode}"
+    
+    if args.RUN_AA == 'Yes' and args.AA_extendmode != "":
+        RUN_COMMAND += f" --AA_extendmode {args.AA_extendmode}"
+
+    if args.AA_insert_sdevs:
+        RUN_COMMAND += f" --AA_insert_sdevs {args.AA_insert_sdevs}"
+    
+    if args.downsample: 
+        RUN_COMMAND += f" --downsample {args.downsample}"
+    if args.no_filter:
+        RUN_COMMAND += f" --no_filter"
+    
+    if args.no_QC:
+        RUN_COMMAND += f" --no_QC"
 
 
     os.environ['AA_SEED'] = str(args.AA_seed)
@@ -76,14 +99,15 @@ def run_paa(args):
     print(f"AA_SEED is set as: {os.environ['AA_SEED']}, the type is: {type(os.environ['AA_SEED'])}")
 
     ## download data files
-    print(RUN_COMMAND)
-    print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
-    os.system(f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {args.file_prefix} {args.ref_path} {input_type}")
+    print(f'RUN COMMAND IS:  \n\n\n\n{RUN_COMMAND}')
+    # print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
+    # os.system(f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {args.file_prefix} {args.ref_path} {input_type}")
 
 
     ## check if user wants minimal outputs, will only output PNGs
     ## testrun:
-    # python3 /opt/genepatt/run_aa.py --input /files/gpunit/input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
+
+    # python3 /files/src/run_aa.py --input /files/gpunit/input/TESTX_H7YRLADXX_S1_L001.cs.rmdup.bam --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
     # python3 /opt/genepatt/run_aa.py --input /files/FF-12.fastq.gz /files/FF-12.R2.fastq.gz --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
     if args.min_outputs == "Yes":
         print('Will reduce the amount of files outputted')
@@ -165,7 +189,7 @@ if __name__ == "__main__":
                 nargs = "+")
     parser.add_argument('--n_threads', help = 'number of threads to use for AA')
     parser.add_argument('--reference', help = 'Reference genome to use',
-                choices = ['hg19', 'GRCh37', 'GRCh38', 'hg38', 'mm10', 'GRCm38'])
+                choices = ['hg19', 'GRCh37', 'GRCh38','mm10', 'GRCh38_viral'])
     parser.add_argument('--file_prefix',
                 help = 'Name of the sample being run')
     parser.add_argument('--RUN_AA',
@@ -197,7 +221,28 @@ if __name__ == "__main__":
     parser.add_argument('--normal_bam', help = "Path to a matched normal bam for CNVKit (optional)", default = "No")
     parser.add_argument('--ref_path', help = "Path to reference Genome, won't download the reference genome", default = "None")
     parser.add_argument('--min_outputs', help = "Minimizing the amount of outputs.")
-
+    parser.add_argument("--sv_vcf",
+                        help="Provide a VCF file of externally-called SVs to augment SVs identified by AA internally.",
+                        metavar='FILE', action='store', type=str)
+    parser.add_argument("--sv_vcf_no_filter", help="Use all external SV calls from the --sv_vcf arg, even "
+                        "those without 'PASS' in the FILTER column.", action='store_true', default=False)
+    parser.add_argument("--cngain", metavar='FLOAT', type=float, help="CN gain threshold to consider for AA seeding",
+                        default=4.5)
+    parser.add_argument("--cnsize_min", metavar='INT', type=int, help="CN interval size (in bp) to consider for AA seeding",
+                        default=50000)
+    parser.add_argument("--downsample", metavar='FLOAT', type=float, help="AA downsample argument (see AA documentation)",
+                        default=10)
+    parser.add_argument("--AA_runmode", metavar='STR', help="If --run_AA selected, set the --runmode argument to AA. Default mode is "
+                        "'FULL'", choices=['FULL', 'BPGRAPH', 'CYCLES', 'SVVIEW'], default='FULL')
+    parser.add_argument("--AA_extendmode", metavar='STR', help="If --run_AA selected, set the --extendmode argument to AA. Default "
+                        "mode is 'EXPLORE'", choices=["EXPLORE", "CLUSTERED", "UNCLUSTERED", "VIRAL"], default='EXPLORE')
+    parser.add_argument("--AA_insert_sdevs", help="Number of standard deviations around the insert size. May need to "
+                        "increase for sequencing runs with high variance after insert size selection step. (default "
+                        "3.0)", metavar="FLOAT", type=float, default=None)
+    parser.add_argument("--no_filter", help="Do not run amplified_intervals.py to identify amplified seeds",
+                        action='store_true')
+    parser.add_argument("--no_QC", help="Skip QC on the BAM file. Do not adjust AA insert_sdevs for "
+                                        "poor-quality insert size distribution", action='store_true')
 
     args = parser.parse_args()
     print(f"using arguments: {args}")
