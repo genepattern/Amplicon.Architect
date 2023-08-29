@@ -51,7 +51,17 @@
             "cnvkit.segmentation",
             "cnv.bed",
             "AA.seed",
-            "normal_bam"
+            "normal_bam",
+            "VCF.file",
+            "VCF.no.filter",
+            "CN.gain",
+            "Minimum.copy.number.size",
+            "Downsample.Argument",
+            "AA.runmode",
+            "AA.extend.mode",
+            "AA.std.of.insert.size",
+            "no.filter",
+            "skip.QC"
         ]
     },
     {

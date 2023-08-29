@@ -101,7 +101,7 @@ def run_paa(args):
     ## download data files
     print(f'RUN COMMAND IS:  \n\n\n\n{RUN_COMMAND}')
     # print(f"before going to the bash script: " + "bash /opt/genepatt/download_ref.sh " + args.reference + " "  + f" '{RUN_COMMAND}' {args.file_prefix} " + args.ref_path)
-    # os.system(f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {args.file_prefix} {args.ref_path} {input_type}")
+    os.system(f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {args.file_prefix} {args.ref_path} {input_type}")
 
 
     ## check if user wants minimal outputs, will only output PNGs
@@ -225,7 +225,7 @@ if __name__ == "__main__":
                         help="Provide a VCF file of externally-called SVs to augment SVs identified by AA internally.",
                         metavar='FILE', action='store', type=str)
     parser.add_argument("--sv_vcf_no_filter", help="Use all external SV calls from the --sv_vcf arg, even "
-                        "those without 'PASS' in the FILTER column.", action='store_true', default=False)
+                        "those without 'PASS' in the FILTER column.", type = str, default = "No")
     parser.add_argument("--cngain", metavar='FLOAT', type=float, help="CN gain threshold to consider for AA seeding",
                         default=4.5)
     parser.add_argument("--cnsize_min", metavar='INT', type=int, help="CN interval size (in bp) to consider for AA seeding",
@@ -239,14 +239,12 @@ if __name__ == "__main__":
     parser.add_argument("--AA_insert_sdevs", help="Number of standard deviations around the insert size. May need to "
                         "increase for sequencing runs with high variance after insert size selection step. (default "
                         "3.0)", metavar="FLOAT", type=float, default=None)
-    parser.add_argument("--no_filter", help="Do not run amplified_intervals.py to identify amplified seeds",
-                        action='store_true')
-    parser.add_argument("--no_QC", help="Skip QC on the BAM file. Do not adjust AA insert_sdevs for "
-                                        "poor-quality insert size distribution", action='store_true')
+    parser.add_argument("--no_filter", help="Do not run amplified_intervals.py to identify amplified seeds", type = str, default = 'No')
+    parser.add_argument("--no_QC", help="Skip QC on the BAM file. Do not adjust AA insert_sdevs for poor-quality insert size distribution", type = str, default = 'No')
 
     args = parser.parse_args()
     print(f"using arguments: {args}")
     if args.reference == 'hg38':
         args.reference = "GRCh38"
-
     run_paa(args)
+
