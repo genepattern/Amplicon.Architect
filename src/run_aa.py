@@ -70,10 +70,10 @@ def run_paa(args):
     if args.normal_bam != "No":
         RUN_COMMAND += f" --normal_bam {args.normal_bam}"
     
-    if args.sv_vcf != "":
+    if (args.sv_vcf != "") and (args.sv_vcf != 'None') and (args.sv_vcf):
         RUN_COMMAND += f" --sv_vcf {args.sv_vcf}"
     
-    if args.sv_vcf_no_filter:
+    if args.sv_vcf_no_filter != "No":
         RUN_COMMAND += f" --sv_vcf_no_filter"
     
     if args.AA_runmode != "":
@@ -87,10 +87,10 @@ def run_paa(args):
     
     if args.downsample: 
         RUN_COMMAND += f" --downsample {args.downsample}"
-    if args.no_filter:
+    if args.no_filter != "No":
         RUN_COMMAND += f" --no_filter"
-    
-    if args.no_QC:
+
+    if args.no_QC != 'No':
         RUN_COMMAND += f" --no_QC"
 
 
@@ -222,8 +222,7 @@ if __name__ == "__main__":
     parser.add_argument('--ref_path', help = "Path to reference Genome, won't download the reference genome", default = "None")
     parser.add_argument('--min_outputs', help = "Minimizing the amount of outputs.")
     parser.add_argument("--sv_vcf",
-                        help="Provide a VCF file of externally-called SVs to augment SVs identified by AA internally.",
-                        metavar='FILE', action='store', type=str)
+                        help="Provide a VCF file of externally-called SVs to augment SVs identified by AA internally.")
     parser.add_argument("--sv_vcf_no_filter", help="Use all external SV calls from the --sv_vcf arg, even "
                         "those without 'PASS' in the FILTER column.", type = str, default = "No")
     parser.add_argument("--cngain", metavar='FLOAT', type=float, help="CN gain threshold to consider for AA seeding",
