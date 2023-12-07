@@ -7,7 +7,6 @@
     <antcall target="prezip"/>
     <zip destfile="${dest.dir}/${ant.project.name}.zip" whenempty="fail" defaultexcludes="true">
         <fileset dir="." includes="manifest, paramgroups.json, LICENSE"/>
-        <fileset dir="src" includes="*.sh"/>
         <!-- if you are iterating in the module integrator you will need to include the source files in the module zip -->
         <!-- zipfileset dir="src" includes="*.py"/-->
     </zip>

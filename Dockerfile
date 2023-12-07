@@ -1,5 +1,6 @@
 # Parent image is the Amplicon-Architect-Environment
-FROM jluebeck/prepareaa:v1.0.0
+# https://hub.docker.com/r/jluebeck/prepareaa/tags
+FROM jluebeck/prepareaa:v1.1.0
 
 USER root
 RUN mkdir -p /opt/genepatt

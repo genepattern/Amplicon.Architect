@@ -1,16 +1,16 @@
 #AmpliconSuite
-#Tue Aug 29 02:25:14 UTC 2023
+#Thu Dec 07 12:50:15 PST 2023
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:27.5
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:28
 author=Edwin Huang;Mesirov Lab
 commandLine=python3 /opt/genepatt/run_aa.py --input <AA_zipped_output> <bam.file> <fastq.r1> <fastq.r2> --n_threads <job.cpuCount> --no_filter <no.filter> --no_QC <skip.QC> --sv_vcf_no_filter <VCF.no.filter> --reference <reference> --file_prefix <Output.File.Prefix> --RUN_AA <RUN.AA> --RUN_AC <RUN.AC> --min_outputs <minimal.outputs> --ploidy <ploidy> --purity <purity> --cnvkit_segmentation <cnvkit.segmentation> --AA_seed <AA.seed> --cngain <CN.gain> --cnsize_min <Minimum.copy.number.size> --downsample <Downsample.Argument> --AA_runmode <AA.runmode> --AA_extendmode <AA.extend.mode> --AA_insert_sdevs <AA.std.of.insert.size> <cnv.bed> <normal_bam> <VCF.file> <sample_metadata> <sample_type> <tissue_of_origin> <sample_description> <reference_genome> <run_metadata_file> <number_of_AA_amplicons> <sample_source> <number_of_AA_features>
 cpuType=any
-description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n
-documentationUrl=https\://github.com/jluebeck/PrepareAA. View licenses here: https://github.com/genepattern/AmpliconSuite#licenses.
+description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n\n\nView licenses here\: https\://github.com/genepattern/AmpliconSuite\#licenses\n<br/>\n<p>\nTo increase your GenePattern disk space quote so you can more easily upload the input bam files, <b><a href\="https\://forms.gle/23tkh98vwkhtCeKM7">click here to join the AmpliconSuiteUsers group on this server.</b> </p>\n
+documentationUrl=https\://github.com/jluebeck/PrepareAA
 fileFormat=
 job.cpuCount=8
-job.docker.image=genepattern/amplicon-architect\:v2.2
-job.memory=4Gb
+job.docker.image=genepattern/amplicon-architect\:v2.3
+job.memory=16Gb
 job.walltime=10\:00\:00
 language=any
 name=AmpliconSuite
@@ -458,7 +458,7 @@ p9_prefix_when_specified=
 p9_type=java.lang.Float
 p9_value=
 privacy=public
-publicationDate=07/10/2023 12\:22 
+publicationDate=08/28/2023 22\:30 
 quality=production
 src.repo=https\://github.com/genepattern/AmpliconSuite
 taskDoc=
