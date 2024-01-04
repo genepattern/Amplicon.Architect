@@ -1,0 +1,7 @@
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT14.cs.bam
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT18.cs.bam
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT19.cs.bam
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT12.cs.bam
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT13.cs.bam
+/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/users/edwin5588/uploads/AA_bam_files_test/KT15.cs.bam
+

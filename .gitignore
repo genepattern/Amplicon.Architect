@@ -15,3 +15,6 @@ gpunit/.DS_Store
 .DS_Store
 gpunit/.DS_Store
 gpunit/.DS_Store
+src/mosek.lic
+*.bam
+*.bai
