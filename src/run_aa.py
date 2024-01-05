@@ -16,7 +16,7 @@ import json
 global EXCLUSION_LIST
 EXCLUSION_LIST = ['.txt', '.bed', '.cns', '.out', '.pdf', '.log', '.stderr', '.json', '.tsv', '.cns.gz']
 global EXTENSIONS_LIST
-EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz', '.fastq', '.fq']
+EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz']
 
 def run_paa(input_list, sample_name, args):
     """
@@ -179,7 +179,7 @@ def metadata_helper(metadata_args):
 
 
 
-def get_sample_names(args):
+def get_sample_names(filepaths):
     """
     Gets a unique set of sample names from the inputs
     python3 src/run_aa.py --input /directory/to/the/file/FF12.R1.fastq.gz /directory/to/the/file/FF12.R2.fastq.gz /directory/to/the/file/FF13.bam /directory/to/the/file/FF15.R.bam
@@ -188,17 +188,6 @@ def get_sample_names(args):
     """
 
     sample_names = set()
-    filepaths = []
-
-    if (len(args.input) == 1) and ('.txt' in args.input[0]):
-        ## read lines and get list of input files:
-        with open(args.input[0], 'r') as filelist:
-            for line in filelist.readlines():
-                fp = line.strip()
-                if fp != '':
-                    filepaths.append(fp)
-
-
 
     for file in filepaths:
         sample_name = ''
@@ -208,7 +197,7 @@ def get_sample_names(args):
         if sample_name != '':
             sample_names.add(sample_name)
 
-    return filepaths, list(sample_names)
+    return list(sample_names)
 
 def create_parameter_sets(sample_names, filepaths):
     """
@@ -322,24 +311,50 @@ if __name__ == "__main__":
 
     ## to do: if txt, then find the samples, if not, then run AA on it. 
     ## 
-    if (len(args.input) == 1) and (".txt" in args.input[0]):
-        filepaths, sample_name_list = get_sample_names(args)
-        parameter_sets = create_parameter_sets(sample_name_list, filepaths)
-        AA_commands = run_paa_per_sample(parameter_sets, args)
-    else:
-        input_list = args.input
-        for ext in EXTENSIONS_LIST:
-            if ext in input_list[0]:
-                sample_name = os.path.basename(input_list[0]).replace(ext, '')
-        AA_commands = [run_paa(input_list, sample_name, args)]
+    # if (len(args.input) == 1) and (".txt" in args.input[0]):
+    #     filepaths, sample_name_list = get_sample_names(args)
+    #     parameter_sets = create_parameter_sets(sample_name_list, filepaths)
+    #     AA_commands = run_paa_per_sample(parameter_sets, args)
+    # else:
+    #     input_list = args.input
+    #     for ext in EXTENSIONS_LIST:
+    #         if ext in input_list[0]:
+    #             sample_name = os.path.basename(input_list[0]).replace(ext, '')
+    #     AA_commands = [run_paa(input_list, sample_name, args)]
 
+    def read_filelist(fp):
+        """
+        Reads the filelist.txt and returns a list of filepaths. 
+        """
+        filepaths = []
+        with open(fp, 'r') as file:
+            for line in file.readlines():
+                fp = line.strip()
+                if fp != '':
+                    filepaths.append(fp)
+        return filepaths
+                
+
+    all_filepaths = []
+    for input in args.input:
+        if ".txt" in input: 
+            ## most likely a filelist
+            ## get the list of filepaths from it
+            filepaths = read_filelist(input)
+            all_filepaths += filepaths
+        else:
+            all_filepaths.append(input)
+    
+    sample_name_list = get_sample_names(all_filepaths)
+    parameter_sets = create_parameter_sets(sample_name_list, all_filepaths)
+    AA_commands = run_paa_per_sample(parameter_sets, args)
 
 
     print('process finished')
 
     print(AA_commands)
     for cmd in AA_commands:
-        print(f'running: {cmd}')
+        print(f'running: {cmd} \n \n ')
         os.system(f'{cmd}')
 
     if args.min_outputs == "Yes":
@@ -352,7 +367,7 @@ if __name__ == "__main__":
                     if exclude == extension:
                         print('will remove: ' + fp)
                         os.remove(fp)
-    ## if multiple aa commands, run aa on them individually. 
+    # if multiple aa commands, run aa on them individually. 
 
 
 

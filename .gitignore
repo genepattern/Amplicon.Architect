@@ -18,3 +18,10 @@ gpunit/.DS_Store
 src/mosek.lic
 *.bam
 *.bai
+AA_bam_files_test/input_list.txt
+AA_bam_files_test/input_list2.txt
+AA_bam_files_test/inputlist3.txt
+AA_bam_files_test/input_list.txt
+gpunit/input/sample_1.fq.gz
+*.gz
+AA_bam_files_test/input_list.txt
