@@ -16,7 +16,7 @@ import json
 global EXCLUSION_LIST
 EXCLUSION_LIST = ['.txt', '.bed', '.cns', '.out', '.pdf', '.log', '.stderr', '.json', '.tsv', '.cns.gz']
 global EXTENSIONS_LIST
-EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz']
+EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz', '1.fastq.gz', '2.fastq.gz']
 
 def run_paa(input_list, sample_name, args):
     """
@@ -354,19 +354,19 @@ if __name__ == "__main__":
 
     print(AA_commands)
     for cmd in AA_commands:
-        print(f'running: {cmd} \n \n ')
-        os.system(f'{cmd}')
+        print(f'\n running: {cmd} \n \n ')
+    #     os.system(f'{cmd}')
 
-    if args.min_outputs == "Yes":
-        print('Will reduce the amount of files outputted')
-        for root, dirs, files in os.walk('.'):
-            for name in files:
-                fp = os.path.join(root, name)
-                extension = os.path.splitext(fp)[-1]
-                for exclude in EXCLUSION_LIST:
-                    if exclude == extension:
-                        print('will remove: ' + fp)
-                        os.remove(fp)
+    # if args.min_outputs == "Yes":
+    #     print('Will reduce the amount of files outputted')
+    #     for root, dirs, files in os.walk('.'):
+    #         for name in files:
+    #             fp = os.path.join(root, name)
+    #             extension = os.path.splitext(fp)[-1]
+    #             for exclude in EXCLUSION_LIST:
+    #                 if exclude == extension:
+    #                     print('will remove: ' + fp)
+    #                     os.remove(fp)
     # if multiple aa commands, run aa on them individually. 
 
 
