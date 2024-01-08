@@ -104,6 +104,12 @@ def run_paa(input_list, sample_name, args):
 
     if args.no_QC != 'No':
         RUN_COMMAND += f" --no_QC"
+    
+    if (args.cngain != 4.5) and (args.cngain > 0):
+        RUN_COMMAND += f" --cngain {args.cngain}"
+
+    if (args.cnsize_min != 50000) and (args.cnsize_min > 0):
+        RUN_COMMAND += f" --cnsize_min {args.cnsize_min}"
 
 
     os.environ['AA_SEED'] = str(args.AA_seed)
@@ -355,18 +361,18 @@ if __name__ == "__main__":
     print(AA_commands)
     for cmd in AA_commands:
         print(f'\n running: {cmd} \n \n ')
-    #     os.system(f'{cmd}')
+        os.system(f'{cmd}')
 
-    # if args.min_outputs == "Yes":
-    #     print('Will reduce the amount of files outputted')
-    #     for root, dirs, files in os.walk('.'):
-    #         for name in files:
-    #             fp = os.path.join(root, name)
-    #             extension = os.path.splitext(fp)[-1]
-    #             for exclude in EXCLUSION_LIST:
-    #                 if exclude == extension:
-    #                     print('will remove: ' + fp)
-    #                     os.remove(fp)
+    if args.min_outputs == "Yes":
+        print('Will reduce the amount of files outputted')
+        for root, dirs, files in os.walk('.'):
+            for name in files:
+                fp = os.path.join(root, name)
+                extension = os.path.splitext(fp)[-1]
+                for exclude in EXCLUSION_LIST:
+                    if exclude == extension:
+                        print('will remove: ' + fp)
+                        os.remove(fp)
     # if multiple aa commands, run aa on them individually. 
 
 

@@ -1,2 +1,6 @@
-/files/AA_bam_files_test/KT9.cs.bam
-/files/AA_bam_files_test/KT14.cs.bam
+aa.1.fq.gz
+bb.1.fastq.gz
+
+
+
+
