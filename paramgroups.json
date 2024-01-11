@@ -22,8 +22,8 @@
         ]
     },
     {
-        "name": "Inputs (Pick from one group and choose inputs)/OPTION 3: Amplicon Classifier",
-        "description": "If you have a completed Amplicon Architect sample. Upload the zip file here. Remember to select: RUN AA: NO, in the required parameters section.",
+        "name": "Inputs (Pick from one group and choose inputs)/OPTION 3: Amplicon Classifier (Re-classify Amplicons)",
+        "description": "If you have a completed Amplicon Architect sample, you can upload your AA outputs zip file to re-classify using the latest version of Amplicon Classifier. Upload the zip file here.",
         "hidden": true,
         "parameters": [
             "AA_zipped_output"
@@ -46,8 +46,6 @@
         "description": "",
         "hidden": true,
         "parameters": [
-            "ploidy",
-            "purity",
             "cnvkit.segmentation",
             "cnv.bed",
             "AA.seed",
@@ -61,7 +59,9 @@
             "AA.extend.mode",
             "AA.std.of.insert.size",
             "no.filter",
-            "skip.QC"
+            "skip.QC",
+            "ploidy",
+            "purity"
         ]
     },
     {
@@ -79,5 +79,8 @@
             "number_of_AA_features",
             "sample_description"
         ]
+    },
+    {
+        "name": "Job Options: Set to higher limit if running data that is >10x coverage."
     }
 ]

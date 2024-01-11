@@ -75,8 +75,8 @@ def run_paa(input_list, sample_name, args):
         RUN_COMMAND += " --cnvkit_dir /home/programs/cnvkit.py"
 
     if args.metadata:
-        metadata_helper(args.metadata)
-        RUN_COMMAND +=  " --sample_metadata /home/metadata.json"
+        metadata_helper(args)
+        RUN_COMMAND +=  " --sample_metadata sample_metadata.json"
 
     if args.normal_bam:
         RUN_COMMAND += f" --normal_bam {args.normal_bam}"
@@ -161,28 +161,29 @@ def run_ac_helper(zip_fp):
                 return dir_name
     return "AA_results folder not found"
 
-def metadata_helper(metadata_args):
+def metadata_helper(args):
     """
     If metadata provided, this helper is used to parse it.
 
     input --> Metadata Args
     output --> fp to json file of sample metadata to build on
     """
-    keys = "sample_metadata,sample_type,tissue_of_origin, \
-            sample_description,run_metadata_file,number_of_AA_amplicons, \
-            sample_source,number_of_AA_features".split(',')
-
-    with open(metadata_args[0], 'r') as json_file:
+    
+    if ".json" not in args.metadata:
+        json_file = open('/opt/genepatt/sample_metadata_skeleton.json', 'r')
         json_obj = json.load(json_file)
+        json_file.close()
 
-    for key_ind in range(len(keys)):
-        key = keys[key_ind]
-        json_obj[key] = metadata_args[key_ind]
 
-    with open('/home/genepatt/metadata.json', 'w') as json_file:
+    keys = ['metadata_sample_type','metadata_sample_source','metadata_tissue_of_origin','metadata_reference_genome','metadata_run_metadata_file', 'metadata_number_of_AA_amplicons', 
+            'metadata_number_of_AA_features', 'metadata_sample_description']
+
+    for key in keys:
+        json_obj[key] = vars(args)[key]
+
+    with open('sample_metadata.json', 'w') as json_file:
         json.dump(json_obj, json_file, indent = 4)
     json_file.close()
-
 
 
 def get_sample_names(filepaths):
@@ -262,6 +263,7 @@ if __name__ == "__main__":
                 choices = ['Yes', 'No'])
     parser.add_argument('--ploidy', type=float,
                 help = 'Specify a ploidy estimate of the genome for CNVKit')
+    
     parser.add_argument('--purity', help =
     'Specify a tumor purity estimate for CNVKit. Not used by AA itself.\
     Note that specifying low purity may lead to many high copy number seed \
@@ -309,6 +311,18 @@ if __name__ == "__main__":
                         "3.0)", metavar="FLOAT", type=float, default=3.0)
     parser.add_argument("--no_filter", help="Do not run amplified_intervals.py to identify amplified seeds", type = str, default = 'No')
     parser.add_argument("--no_QC", help="Skip QC on the BAM file. Do not adjust AA insert_sdevs for poor-quality insert size distribution", type = str, default = 'No')
+
+    ### Metadata arguments: 
+    parser.add_argument("--metadata_sample_type")
+    parser.add_argument("--metadata_sample_source")
+    parser.add_argument("--metadata_tissue_of_origin")
+    parser.add_argument("--metadata_reference_genome")
+    parser.add_argument("--metadata_run_metadata_file")
+    parser.add_argument("--metadata_number_of_AA_amplicons")
+    parser.add_argument("--metadata_number_of_AA_features")
+    parser.add_argument("--metadata_sample_description")
+
+    
 
     args = parser.parse_args()
     print(f"using arguments: {args}")
@@ -378,5 +392,5 @@ if __name__ == "__main__":
 
 
 
-## docker build --platform linux/amd64 -t ampsuite . && docker tag ampsuite genepattern/amplicon-architect:v2.4 && docker push genepattern/amplicon-architect:v2.4
+## docker build --platform linux/amd64 -t ampsuite . && docker tag ampsuite genepattern/amplicon-architect:v2.5 && docker push genepattern/amplicon-architect:v2.5
 ## python3 src/run_aa.py --input /Users/edwinhuang/Documents/GitHub/AmpliconSuite/src/input_list.txt
