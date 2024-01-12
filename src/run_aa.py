@@ -129,7 +129,7 @@ def run_paa(input_list, sample_name, args):
     # python3 /opt/genepatt/run_aa.py --input /files/FF-12.fastq.gz /files/FF-12.R2.fastq.gz --n_threads 1 --reference GRCh38 --file_prefix testproject --RUN_AA Yes --RUN_AC Yes 
     
     ## return run command
-    return f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {sample_name} {args.ref_path} {input_type}"
+    return f"bash /opt/genepatt/download_ref.sh {args.reference} '{RUN_COMMAND}' {sample_name} {args.ref_path} {input_type} {args.path_to_mosek}"
 
 
 def run_ac_helper(zip_fp):
@@ -311,6 +311,7 @@ if __name__ == "__main__":
                         "3.0)", metavar="FLOAT", type=float, default=3.0)
     parser.add_argument("--no_filter", help="Do not run amplified_intervals.py to identify amplified seeds", type = str, default = 'No')
     parser.add_argument("--no_QC", help="Skip QC on the BAM file. Do not adjust AA insert_sdevs for poor-quality insert size distribution", type = str, default = 'No')
+    parser.add_argument("--path_to_mosek", help = "Server path to mosek license file", default = "/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/")
 
     ### Metadata arguments: 
     parser.add_argument("--metadata_sample_type")

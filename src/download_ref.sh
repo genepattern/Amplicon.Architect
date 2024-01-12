@@ -8,11 +8,12 @@ RUN_COMMAND=$2
 SAMPLE_NAME=$3
 REF_PATH=$4
 INPUT_TYPE=$5
+MOSEK_PATH=$6
 AA_SRC=/home/programs/AmpliconArchitect-master/src
 export AA_SRC
 AC_SRC=/home/programs/AmpliconClassifier-main
 export AC_SRC
-MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
+MOSEKLM_LICENSE_FILE=$MOSEK_PATH
 export MOSEKLM_LICENSE_FILE
 NCM_HOME=/home/programs/NGSCheckMate-master/
 export NCM_HOME

@@ -8,7 +8,7 @@ RUN mkdir -p /opt/genepatt
 COPY src/run_aa.py /opt/genepatt
 COPY src/download_ref.sh /opt/genepatt
 COPY src/sample_metadata_skeleton.json /opt/genepatt
-ENV MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
+# ENV MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
 RUN mkdir -p /home/aa_user/mosek
 RUN chmod -R 777 /opt/genepatt/*
 RUN chmod -R 777 /home/*
