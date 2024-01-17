@@ -12,11 +12,12 @@ import shutil
 import tarfile
 import zipfile
 import json
+import pathlib
 
 global EXCLUSION_LIST
 EXCLUSION_LIST = ['.txt', '.bed', '.cns', '.out', '.pdf', '.log', '.stderr', '.json', '.tsv', '.cns.gz']
 global EXTENSIONS_LIST
-EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz', '1.fastq.gz', '2.fastq.gz']
+EXTENSIONS_LIST = ['.bam', '.R1.fastq.gz', '.R2.fastq.gz', '.zip', '.fq.gz', '1.fq.gz', '2.fq.gz', '.R1.fq.gz', '.R2.fq.gz', '1.fastq.gz', '2.fastq.gz', '.tar.gz']
 
 def run_paa(input_list, sample_name, args):
     """
@@ -48,6 +49,7 @@ def run_paa(input_list, sample_name, args):
             AA_results_location = run_ac_helper(input_file)
             if AA_results_location != "AA_results folder not found":
                 RUN_COMMAND += f" --completed_AA_runs {AA_results_location} --cnvkit_dir /home/programs/cnvkit.py"
+                print(f'run command is: {RUN_COMMAND}')
                 return (RUN_COMMAND)
                 # os.system("bash /home/download_ref.sh " + args.reference + f" '{RUN_COMMAND}' {args.file_prefix}" )
             else:
@@ -138,10 +140,10 @@ def run_ac_helper(zip_fp):
     returns filepath to AA_results folder.
 
     """
-    destination = os.path.join('/', 'opt', 'genepatt', 'extracted')
+    destination = os.path.join('.')
 
     if not os.path.exists(destination):
-        os.mkdir(destination)
+        pathlib.Path(destination).mkdir(parents = True, exist_ok = True)
     if ".zip" in zip_fp:
         with zipfile.ZipFile(zip_fp, 'r') as zip_ref:
             zip_ref.extractall(destination)
@@ -376,18 +378,18 @@ if __name__ == "__main__":
     print(AA_commands)
     for cmd in AA_commands:
         print(f'\n running: {cmd} \n \n ')
-        os.system(f'{cmd}')
+    #     os.system(f'{cmd}')
 
-    if args.min_outputs == "Yes":
-        print('Will reduce the amount of files outputted')
-        for root, dirs, files in os.walk('.'):
-            for name in files:
-                fp = os.path.join(root, name)
-                extension = os.path.splitext(fp)[-1]
-                for exclude in EXCLUSION_LIST:
-                    if exclude == extension:
-                        print('will remove: ' + fp)
-                        os.remove(fp)
+    # if args.min_outputs == "Yes":
+    #     print('Will reduce the amount of files outputted')
+    #     for root, dirs, files in os.walk('.'):
+    #         for name in files:
+    #             fp = os.path.join(root, name)
+    #             extension = os.path.splitext(fp)[-1]
+    #             for exclude in EXCLUSION_LIST:
+    #                 if exclude == extension:
+    #                     print('will remove: ' + fp)
+    #                     os.remove(fp)
     # if multiple aa commands, run aa on them individually. 
 
 

@@ -1,5 +1,6 @@
 aa.1.fq.gz
 bb.1.fastq.gz
+https://genepattern.ucsd.edu/gp/jobResults/22663/TESTX_H7YRLADXX_S1_L001.cs.rmdup_outputs.tar.gz
 
 
 

@@ -4,6 +4,7 @@ FROM jluebeck/prepareaa:v1.2.1
 
 USER root
 RUN mkdir -p /opt/genepatt
+RUN mkdir -p /opt/genepatt/extracted
 # COPY the wrapper script over
 COPY src/run_aa.py /opt/genepatt
 COPY src/download_ref.sh /opt/genepatt
@@ -11,8 +12,10 @@ COPY src/sample_metadata_skeleton.json /opt/genepatt
 # ENV MOSEKLM_LICENSE_FILE=/expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
 RUN mkdir -p /home/aa_user/mosek
 RUN chmod -R 777 /opt/genepatt/*
+RUN chmod -R 777 /opt/genepatt/extracted
 RUN chmod -R 777 /home/*
 RUN chmod -R 777 /home/aa_user/
+
 
 # Copy local mosek.lic file, for testing only
 # COPY src/mosek.lic /home/mosek/
