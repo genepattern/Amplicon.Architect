@@ -1,10 +1,10 @@
 #AmpliconSuite
-#Wed Jan 10 13:27:32 PST 2024
+#Tue Jan 30 14:01:53 PST 2024
 JVMLevel=
-LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:33
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00427\:37.1
 author=Edwin Huang;Mesirov Lab
 categories=ecdna
-commandLine=python3 /opt/genepatt/run_aa.py --input <AA_zipped_output> <bam.file> <fastq.r1> <fastq.r2> --n_threads <job.cpuCount>  <no.filter>  <skip.QC>  <VCF.no.filter> --reference <reference> --file_prefix <Output.File.Prefix> --RUN_AA <RUN.AA> --RUN_AC <RUN.AC> --min_outputs  <minimal.outputs>  <ploidy>  <purity>  <cnvkit.segmentation>  <AA.seed>  <CN.gain>  <Minimum.copy.number.size>   <Downsample.Argument>  <AA.runmode>  <AA.extend.mode>  <AA.std.of.insert.size>  <cnv.bed>  <normal_bam>  <VCF.file>   <sample_metadata>  <sample_type>  <tissue_of_origin>  <sample_description>  <reference_genome>  <run_metadata_file>  <number_of_AA_amplicons>  <sample_source>  <number_of_AA_features> --path_to_mosek /expanse/projects/mesirovlab/genepattern/servers/ucsd.prod/mosek/8/licenses/
+commandLine=python3 /opt/genepatt/run_aa.py --input <AA_zipped_output> <bam.file> <fastq.r1> <fastq.r2> --n_threads <job.cpuCount>  <no.filter>  <skip.QC>  <VCF.no.filter> --reference <reference> --file_prefix <Output.File.Prefix> --RUN_AA <RUN.AA> --RUN_AC <RUN.AC> --min_outputs  <minimal.outputs>  <ploidy>  <purity>  <cnvkit.segmentation>  <AA.seed>  <CN.gain>  <Minimum.copy.number.size>   <Downsample.Argument>  <AA.runmode>  <AA.extend.mode>  <AA.std.of.insert.size>  <cnv.bed>  <normal_bam>  <VCF.file>   <sample_metadata>  <sample_type>  <tissue_of_origin>  <sample_description>  <reference_genome>  <run_metadata_file>  <number_of_AA_amplicons>  <sample_source>  <number_of_AA_features> --path_to_mosek <libdir>
 cpuType=any
 description=A multithread-enabled quickstart tool for AmpliconArchitect. Performs all preliminary steps (alignment, CNV calling, seed interval detection) required prior to running AmpliconArchitect. PrepareAA supports hg19 (or GRCh37), hg38 as well as mouse genome mm10 (or GRCm38). PrepareAA can also be invoked to start at intermediate stages of the data preparation process.\n\nAll credits go to\: https\://github.com/jluebeck/PrepareAA \n\n\nView licenses here\: https\://github.com/genepattern/AmpliconSuite\#licenses\n<br/>\n<p>\nTo increase your GenePattern disk space quote so you can more easily upload the input bam files, <b><a href\="https\://forms.gle/23tkh98vwkhtCeKM7">click here to join the AmpliconSuiteUsers group on this server.</b> </a> </p>\n \n To run multiple samples at once, simply drag and drop multiple samples into the input options. There is no need to check the "Batch" box. 
 documentationUrl=https\://github.com/jluebeck/PrepareAA
@@ -244,7 +244,7 @@ p26_TYPE=TEXT
 p26_default_value=
 p26_description=
 p26_fileFormat=
-p26_flag=--metadata_sample_type 
+p26_flag=--metadata_sample_type
 p26_name=sample_type
 p26_numValues=0..1
 p26_optional=on
@@ -460,8 +460,8 @@ p9_prefix=--cnvkit_segmentation
 p9_prefix_when_specified=--cnvkit_segmentation 
 p9_type=java.lang.String
 p9_value=cbs\=cbs;haar\=haar;hmm\=hmm;hmm-tumor\=hmm-tumor;hmm-germline\=hmm-germline;none\=none
-privacy=private
-publicationDate=01/08/2024 11\:57 
+privacy=public
+publicationDate=01/17/2024 17\:02 
 quality=production
 src.repo=https\://github.com/genepattern/AmpliconSuite
 taskDoc=
